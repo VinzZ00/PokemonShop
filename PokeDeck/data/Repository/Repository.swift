@@ -6,10 +6,22 @@
 //
 
 import Foundation
+import CoreData
 
 class Repository {
     
     static let shared = Repository()
+    let persistentContainer : NSPersistentContainer = {
+        var c = NSPersistentContainer(name: "PokemonStore")
+        c.loadPersistentStores { desc, error in
+            if let error = error {
+                print("Core Data Failed to load \(error.localizedDescription)")
+            }
+        }
+        return c
+    }()
+    
+    
     
     let apiDatasources : PokemonAPIDataSource = PokemonAPIDataSource()
 }

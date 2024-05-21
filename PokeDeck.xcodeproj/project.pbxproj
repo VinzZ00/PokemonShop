@@ -11,7 +11,7 @@
 		AC15A4C12BFCA5DB007C7029 /* PokemonAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4C02BFCA5DB007C7029 /* PokemonAPIDataSource.swift */; };
 		AC15A4C82BFCB599007C7029 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4C72BFCB599007C7029 /* Pokemon.swift */; };
 		AC15A4CC2BFCD65D007C7029 /* pokemonList+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4CB2BFCD65D007C7029 /* pokemonList+.swift */; };
-		AC15A4CF2BFCFD68007C7029 /* pokemonStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4CD2BFCFD68007C7029 /* pokemonStore.xcdatamodeld */; };
+		AC15A4CF2BFCFD68007C7029 /* PokemonStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4CD2BFCFD68007C7029 /* PokemonStore.xcdatamodeld */; };
 		AC15A4DC2BFD0584007C7029 /* PokemonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4DB2BFD0584007C7029 /* PokemonDTO.swift */; };
 		AC15A4E32BFD061F007C7029 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4E12BFD061F007C7029 /* Repository.swift */; };
 		AC15A4E92BFD0641007C7029 /* FetchAvailablePokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4E72BFD0641007C7029 /* FetchAvailablePokemon.swift */; };
@@ -32,7 +32,7 @@
 		AC15A4C02BFCA5DB007C7029 /* PokemonAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPIDataSource.swift; sourceTree = "<group>"; };
 		AC15A4C72BFCB599007C7029 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		AC15A4CB2BFCD65D007C7029 /* pokemonList+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "pokemonList+.swift"; sourceTree = "<group>"; };
-		AC15A4CE2BFCFD68007C7029 /* pokemonStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pokemonStore.xcdatamodel; sourceTree = "<group>"; };
+		AC15A4CE2BFCFD68007C7029 /* PokemonStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PokemonStore.xcdatamodel; sourceTree = "<group>"; };
 		AC15A4DB2BFD0584007C7029 /* PokemonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PokemonDTO.swift; path = PokeDeck/Domain/Entity/PokemonDTO.swift; sourceTree = SOURCE_ROOT; };
 		AC15A4E12BFD061F007C7029 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		AC15A4E72BFD0641007C7029 /* FetchAvailablePokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAvailablePokemon.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 				AC1DF7122BFC95E3001BEB15 /* ViewController.swift */,
 				AC1DF7172BFC95E5001BEB15 /* Assets.xcassets */,
 				AC1DF71C2BFC95E5001BEB15 /* Info.plist */,
-				AC15A4CD2BFCFD68007C7029 /* pokemonStore.xcdatamodeld */,
+				AC15A4CD2BFCFD68007C7029 /* PokemonStore.xcdatamodeld */,
 			);
 			path = PokeDeck;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 				AC1DF7112BFC95E3001BEB15 /* SceneDelegate.swift in Sources */,
 				AC15A4E32BFD061F007C7029 /* Repository.swift in Sources */,
 				AC15A4BF2BFC9F04007C7029 /* CameraService.swift in Sources */,
-				AC15A4CF2BFCFD68007C7029 /* pokemonStore.xcdatamodeld in Sources */,
+				AC15A4CF2BFCFD68007C7029 /* PokemonStore.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,14 +537,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		AC15A4CD2BFCFD68007C7029 /* pokemonStore.xcdatamodeld */ = {
+		AC15A4CD2BFCFD68007C7029 /* PokemonStore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				AC15A4CE2BFCFD68007C7029 /* pokemonStore.xcdatamodel */,
+				AC15A4CE2BFCFD68007C7029 /* PokemonStore.xcdatamodel */,
 			);
-			currentVersion = AC15A4CE2BFCFD68007C7029 /* pokemonStore.xcdatamodel */;
-			name = pokemonStore.xcdatamodeld;
-			path = /Users/vinz/Desktop/Learning/PokeDeck/PokeDeck/pokemonStore.xcdatamodeld;
+			currentVersion = AC15A4CE2BFCFD68007C7029 /* PokemonStore.xcdatamodel */;
+			path = PokemonStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

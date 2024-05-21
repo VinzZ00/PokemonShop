@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
-
+import CoreData
 
 extension PokemonData {
+  
     func mapToPokemonDTO() async throws -> PokemonDTO? {
 
         guard let url = URL(string: self.url) else {
@@ -27,46 +28,25 @@ extension PokemonData {
                 case .success(let pokemonDetail) :
                     
                     pokemon = PokemonDTO(nickName: "", pokemonName: pokemonDetail.name, pokemonDisplay: URL(string: pokemonDetail.sprite.front_shiny) ?? URL(string: "https://placehold.co/100x100")! , weight: pokemonDetail.weight)
-//                    URLSession.shared.dataTask(with: URL(string: pokemonDetail.sprite.front_shiny) ?? URL(string: "https://placehold.co/100x100")!) {
-//                        data, response, error in
-//                        
-//                        if let error = error {
-//                            print("Error fetching the image : \(error)")
-//                            
-//                        }
-//                        
-//                        guard
-//                            let resp = response as? HTTPURLResponse,
-//                            resp.statusCode == 200,
-//                            let imageData = data else {
-//                            print("Invalid response")
-//                            return
-//                        }
-//                        
-//                        if let image = UIImage(data: imageData) {
-//                            
-//                            pokemon = PokemonDTO(nickName: "", pokemonName: pokemonDetail.name, pokemonDisplay: image, weight: pokemonDetail.weight)
-//                            
-//                        }
-//                        
-//                    }.resume()
-                    
                     
                 case .failure(let error) :
                     print("error while getting detail pokemon when mapping to pokemon : \(error)")
                 }
             }
-        
         return pokemon
-
     }
-    
-    
 }
 
-//extension PokemonDTO {
-//    func mapToPokemon() -> PokemonData {
-//        return 
-//    }
-//    
-//}
+extension PokemonDTO {
+    func mapToNSPokemon() -> NSPokemon {
+        let pokemon = NSPokemon(context: Repository.shared.persistentContainer.viewContext)
+        
+        pokemon.nickName = self.nickName
+        pokemon.pokemonName = self.pokemonName
+        pokemon.image = self.pokemonDisplay.absoluteString
+        pokemon.weight = Float(self.weight)
+        
+        return pokemon
+    }
+    
+}
