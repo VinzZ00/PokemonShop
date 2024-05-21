@@ -18,7 +18,7 @@ class PokemonAPIDataSource {
         return url
     }
     
-    func fetchPokemonList(completion : @escaping (Result<[PokemonDataDTO], Error>) -> Void) async {
+    func fetchPokemonList(completion : @escaping (Result<[PokemonData], Error>) -> Void) async {
         
         // Adding endpoint to the host url
         var endPoint = apiUrl.appending(
@@ -31,7 +31,7 @@ class PokemonAPIDataSource {
             let (data, _) = try await URLSession.shared.data(from: endPoint)
             
             // Convert from JSON Data into [PokemonData] using static pokemonListDTO function
-            let pokemonDatas = pokemonListsDTO.fromJson(jsonData: data)
+            let pokemonDatas = PokemonLists.fromJson(jsonData: data)
             
             // Encode and save to User Default
             let encoder = JSONEncoder()
@@ -45,12 +45,12 @@ class PokemonAPIDataSource {
         }
     }
     
-    func fetchPokemonDetail(url : URL, completion: @escaping (Result<pokemonDTO, Error>) -> Void) async {
+    func fetchPokemonDetail(url : URL, completion: @escaping (Result<Pokemon, Error>) -> Void) async {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             
             let decoder = JSONDecoder()
-            let pokemon = try decoder.decode(pokemonDTO.self, from: data)
+            let pokemon = try decoder.decode(Pokemon.self, from: data)
             completion(.success(pokemon))
             
         } catch {

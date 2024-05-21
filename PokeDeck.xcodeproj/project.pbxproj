@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		AC15A4BF2BFC9F04007C7029 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4BE2BFC9F04007C7029 /* CameraService.swift */; };
 		AC15A4C12BFCA5DB007C7029 /* PokemonAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4C02BFCA5DB007C7029 /* PokemonAPIDataSource.swift */; };
-		AC15A4C82BFCB599007C7029 /* PokemonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4C72BFCB599007C7029 /* PokemonDTO.swift */; };
-		AC15A4CC2BFCD65D007C7029 /* pokemonListDTO+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4CB2BFCD65D007C7029 /* pokemonListDTO+.swift */; };
+		AC15A4C82BFCB599007C7029 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4C72BFCB599007C7029 /* Pokemon.swift */; };
+		AC15A4CC2BFCD65D007C7029 /* pokemonList+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4CB2BFCD65D007C7029 /* pokemonList+.swift */; };
 		AC15A4CF2BFCFD68007C7029 /* pokemonStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4CD2BFCFD68007C7029 /* pokemonStore.xcdatamodeld */; };
 		AC1DF70F2BFC95E3001BEB15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DF70E2BFC95E3001BEB15 /* AppDelegate.swift */; };
 		AC1DF7112BFC95E3001BEB15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DF7102BFC95E3001BEB15 /* SceneDelegate.swift */; };
@@ -25,8 +25,8 @@
 		919B56D0979DBEC68223FDBE /* Pods-PokeDeck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDeck.release.xcconfig"; path = "Target Support Files/Pods-PokeDeck/Pods-PokeDeck.release.xcconfig"; sourceTree = "<group>"; };
 		AC15A4BE2BFC9F04007C7029 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
 		AC15A4C02BFCA5DB007C7029 /* PokemonAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPIDataSource.swift; sourceTree = "<group>"; };
-		AC15A4C72BFCB599007C7029 /* PokemonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDTO.swift; sourceTree = "<group>"; };
-		AC15A4CB2BFCD65D007C7029 /* pokemonListDTO+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "pokemonListDTO+.swift"; sourceTree = "<group>"; };
+		AC15A4C72BFCB599007C7029 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		AC15A4CB2BFCD65D007C7029 /* pokemonList+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "pokemonList+.swift"; sourceTree = "<group>"; };
 		AC15A4CE2BFCFD68007C7029 /* pokemonStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pokemonStore.xcdatamodel; sourceTree = "<group>"; };
 		AC1DF70B2BFC95E3001BEB15 /* PokeDeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeDeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1DF70E2BFC95E3001BEB15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		AC15A4C42BFCB540007C7029 /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				AC15A4C72BFCB599007C7029 /* PokemonDTO.swift */,
+				AC15A4C72BFCB599007C7029 /* Pokemon.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -128,7 +128,7 @@
 		AC15A4C92BFCD63A007C7029 /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				AC15A4CB2BFCD65D007C7029 /* pokemonListDTO+.swift */,
+				AC15A4CB2BFCD65D007C7029 /* pokemonList+.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -266,8 +266,8 @@
 				AC15A4C12BFCA5DB007C7029 /* PokemonAPIDataSource.swift in Sources */,
 				AC1DF7132BFC95E3001BEB15 /* ViewController.swift in Sources */,
 				AC1DF70F2BFC95E3001BEB15 /* AppDelegate.swift in Sources */,
-				AC15A4C82BFCB599007C7029 /* PokemonDTO.swift in Sources */,
-				AC15A4CC2BFCD65D007C7029 /* pokemonListDTO+.swift in Sources */,
+				AC15A4C82BFCB599007C7029 /* Pokemon.swift in Sources */,
+				AC15A4CC2BFCD65D007C7029 /* pokemonList+.swift in Sources */,
 				AC1DF7112BFC95E3001BEB15 /* SceneDelegate.swift in Sources */,
 				AC15A4BF2BFC9F04007C7029 /* CameraService.swift in Sources */,
 				AC15A4CF2BFCFD68007C7029 /* pokemonStore.xcdatamodeld in Sources */,

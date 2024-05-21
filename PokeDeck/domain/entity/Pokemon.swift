@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct PokemonDataDTO : Codable {
+struct PokemonData : Codable {
     let name : String
     let url : String
 }
 
-struct pokemonListsDTO : Codable {
-    let results : [PokemonDataDTO]
+struct PokemonLists : Codable {
+    let results : [PokemonData]
 }
 
-struct pokemonDTO : Decodable {
+struct PokemonDTO : Decodable {
     let name : String
     let sprite : Sprites
     let weight: Int
