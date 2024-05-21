@@ -77,74 +77,74 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AC15A4BC2BFC9ED0007C7029 /* core */ = {
+		AC15A4BC2BFC9ED0007C7029 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				AC15A4C92BFCD63A007C7029 /* extension */,
-				AC15A4BD2BFC9ED7007C7029 /* utils */,
+				AC15A4C92BFCD63A007C7029 /* Extension */,
+				AC15A4BD2BFC9ED7007C7029 /* Utils */,
 			);
-			path = core;
+			path = Core;
 			sourceTree = "<group>";
 		};
-		AC15A4BD2BFC9ED7007C7029 /* utils */ = {
+		AC15A4BD2BFC9ED7007C7029 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				AC15A4BE2BFC9F04007C7029 /* CameraService.swift */,
 			);
-			path = utils;
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		AC15A4C22BFCA848007C7029 /* domain */ = {
+		AC15A4C22BFCA848007C7029 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				AC15A4E82BFD0641007C7029 /* UseCase */,
-				AC15A4C42BFCB540007C7029 /* entity */,
+				AC15A4C42BFCB540007C7029 /* Entity */,
 			);
-			path = domain;
+			path = Domain;
 			sourceTree = "<group>";
 		};
-		AC15A4C32BFCA880007C7029 /* data */ = {
+		AC15A4C32BFCA880007C7029 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				AC15A4E22BFD061F007C7029 /* Repository */,
 				AC15A4DD2BFD05F7007C7029 /* DataSources */,
 			);
-			path = data;
+			path = Data;
 			sourceTree = "<group>";
 		};
-		AC15A4C42BFCB540007C7029 /* entity */ = {
+		AC15A4C42BFCB540007C7029 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				AC15A4C72BFCB599007C7029 /* Pokemon.swift */,
 				AC15A4DB2BFD0584007C7029 /* PokemonDTO.swift */,
 			);
-			path = entity;
+			path = Entity;
 			sourceTree = "<group>";
 		};
-		AC15A4C52BFCB552007C7029 /* deprecated */ = {
+		AC15A4C52BFCB552007C7029 /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
 				AC1DF7192BFC95E5001BEB15 /* LaunchScreen.storyboard */,
 			);
-			path = deprecated;
+			path = Deprecated;
 			sourceTree = "<group>";
 		};
-		AC15A4C62BFCB56B007C7029 /* config */ = {
+		AC15A4C62BFCB56B007C7029 /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				AC1DF70E2BFC95E3001BEB15 /* AppDelegate.swift */,
 				AC1DF7102BFC95E3001BEB15 /* SceneDelegate.swift */,
 			);
-			path = config;
+			path = Config;
 			sourceTree = "<group>";
 		};
-		AC15A4C92BFCD63A007C7029 /* extension */ = {
+		AC15A4C92BFCD63A007C7029 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				AC15A4CB2BFCD65D007C7029 /* pokemonList+.swift */,
 				AC15A4EC2BFD0BF1007C7029 /* Pokemon+.swift */,
 			);
-			path = extension;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		AC15A4DD2BFD05F7007C7029 /* DataSources */ = {
@@ -195,11 +195,11 @@
 		AC1DF70D2BFC95E3001BEB15 /* PokeDeck */ = {
 			isa = PBXGroup;
 			children = (
-				AC15A4C62BFCB56B007C7029 /* config */,
-				AC15A4C52BFCB552007C7029 /* deprecated */,
-				AC15A4C32BFCA880007C7029 /* data */,
-				AC15A4C22BFCA848007C7029 /* domain */,
-				AC15A4BC2BFC9ED0007C7029 /* core */,
+				AC15A4C62BFCB56B007C7029 /* Config */,
+				AC15A4C52BFCB552007C7029 /* Deprecated */,
+				AC15A4C32BFCA880007C7029 /* Data */,
+				AC15A4C22BFCA848007C7029 /* Domain */,
+				AC15A4BC2BFC9ED0007C7029 /* Core */,
 				AC1DF7122BFC95E3001BEB15 /* ViewController.swift */,
 				AC1DF7172BFC95E5001BEB15 /* Assets.xcassets */,
 				AC1DF71C2BFC95E5001BEB15 /* Info.plist */,
