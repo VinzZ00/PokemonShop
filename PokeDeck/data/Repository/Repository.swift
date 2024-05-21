@@ -8,5 +8,8 @@
 import Foundation
 
 class Repository {
+    
+    static let shared = Repository()
+    
     let apiDatasources : PokemonAPIDataSource = PokemonAPIDataSource()
 }

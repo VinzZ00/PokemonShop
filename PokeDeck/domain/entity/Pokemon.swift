@@ -16,7 +16,7 @@ struct PokemonLists : Codable {
     let results : [PokemonData]
 }
 
-struct PokemonDTO : Decodable {
+struct Pokemon : Decodable {
     let name : String
     let sprite : Sprites
     let weight: Int

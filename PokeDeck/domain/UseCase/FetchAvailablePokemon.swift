@@ -10,24 +10,67 @@ import Foundation
 class FetchAvailablePokemon {
     let repository = Repository();
     
-    func fetch() async -> PokemonDTO  {
-        var data : Data
+    func fetch() async -> [PokemonData]  {
+        var pokemonData : [PokemonData] = [];
         
         if let localData =  UserDefaults.standard.data(forKey: "pokemonList") {
-            data = localData
-        } else {
+            var d = localData
+            
+            // Decoding Data into PokemonData
+            var decoder = JSONDecoder()
             do {
-                data = try await repository.apiDatasources.fetchPokemonList(completion: { res in
-                    switch res {
-                    case .success(pokemonDatas) :
+                pokemonData = try decoder.decode([PokemonData].self, from: d)
+            } catch {
+                
+                // if the local data error then we will replace the data from the remote REST API
+                await repository.apiDatasources.fetchPokemonList { result in
+                    
+                    switch result {
+                    case .success(let pokemonDatas):
+                        do {
+                            // Encode and save to User Default
+                            let encoder = JSONEncoder()
+                            let encodedPokemonData = try encoder.encode(pokemonDatas)
+                            UserDefaults.standard.set(encodedPokemonData, forKey: "pokemonList")
+                        } catch {
+                            print("Error saving data into User default, Error :  \(error)")
+                        }
+                        
+                        pokemonData = pokemonDatas
+                        
+                    case .failure(let error) :
+
+                        // MARK: handling error
+                        print("Error fetching data \(error)")
                         
                     }
-                })
-            } catch {
-                // TODO: give some dummy data handling the error so the app wont crash
-                print("Error Fetching data")
+                }
+            }
+            
+        } else {
+            await repository.apiDatasources.fetchPokemonList { result in
+                
+                switch result {
+                case .success(let pokemonDatas):
+                    do {
+                        // Encode and save to User Default
+                        let encoder = JSONEncoder()
+                        let encodedPokemonData = try encoder.encode(pokemonDatas)
+                        UserDefaults.standard.set(encodedPokemonData, forKey: "pokemonList")
+                    } catch {
+                        print("Error saving data into User default, Error :  \(error)")
+                    }
+                    
+                    pokemonData = pokemonDatas
+                    
+                case .failure(let error) :
+
+                    // MARK: handling error
+                    print("Error fetching data \(error)")
+                    
+                }
             }
         }
-        return
+        return pokemonData.sorted { $0.name < $1.name }
     }
 }
