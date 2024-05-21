@@ -13,6 +13,11 @@ class CameraService : NSObject {
     var captureSession : AVCaptureSession!
     var photoOutput : AVCapturePhotoOutput!
     var videoPreviewLayer : AVCaptureVideoPreviewLayer!
+    var handleQRCode : (String) -> Void
+    
+    init(handleQRCode : @escaping (String) -> Void) {
+        self.handleQRCode = handleQRCode
+    }
     
     func setup(todoAfterSetupSession : () -> Void) {
         captureSession = AVCaptureSession()
@@ -57,6 +62,8 @@ extension CameraService : AVCaptureMetadataOutputObjectsDelegate {
             
             //Haptic Notification when getting QR Code that are readable
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            
+            handleQRCode(stringValue)
         }
     }
 }
