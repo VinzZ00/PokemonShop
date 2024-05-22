@@ -46,7 +46,9 @@ class PokemonDetailViewModel {
             .sink(receiveValue: {
                 [weak self] url in
                 guard let self = self else { return }
-                self.fetchPokemonImage(url: url)
+                Repository.shared.apiDatasources.fetchPokemonImage(url: url) { uiImage in
+                    self.pokemonImage.send(uiImage)
+                }
             })
             .store(in: &cancellables)
     }
@@ -57,24 +59,5 @@ extension PokemonDetailViewModel {
         var pokemonDTO = self.pokemonDTO.value
         pokemonDTO.nickName = nName
         SaveToCoreData().call(pokemon: pokemonDTO)
-    }
-    
-    func fetchPokemonImage(url: URL) {
-        var uiImage : UIImage? = nil
-        URLSession.shared.dataTask(with: url) { data, resp, err in
-            if let err = err {
-                print("masuk ke sini Error \(err)")
-                return
-            }
-            
-            guard let data = data else {
-                print("gaad data")
-                return
-            }
-            
-            uiImage = UIImage(data: data)
-            self.pokemonImage.send(uiImage)
-            
-        }.resume()
     }
 }

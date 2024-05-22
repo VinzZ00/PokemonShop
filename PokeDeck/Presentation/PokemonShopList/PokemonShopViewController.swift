@@ -46,7 +46,6 @@ class PokemonShopViewController : UIViewController {
 extension PokemonShopViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-        
         let detailView = PokemonDetailViewController(viewModel: PokemonDetailViewModel(pokemonData: viewModel.pokemonData[indexPath.row]))
         
         self.navigationController?.pushViewController(detailView, animated: true)

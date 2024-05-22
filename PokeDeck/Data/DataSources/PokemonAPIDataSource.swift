@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PokemonAPIDataSource {
     static let shared = PokemonAPIDataSource();
@@ -110,6 +111,25 @@ class PokemonAPIDataSource {
 //        } catch {
 //            completion(.failure(error))
 //        }
+    }
+    
+    func fetchPokemonImage(url: URL, completion : @escaping (UIImage?) -> Void) {
+        var uiImage : UIImage? = nil
+        URLSession.shared.dataTask(with: url) { data, resp, err in
+            if let err = err {
+                print("masuk ke sini Error \(err)")
+                return
+            }
+            
+            guard let data = data else {
+                print("gaad data")
+                return
+            }
+            
+            uiImage = UIImage(data: data)
+            completion(uiImage)
+            
+        }.resume()
     }
     
     

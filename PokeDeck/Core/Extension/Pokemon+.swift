@@ -12,10 +12,11 @@ import CoreData
 
 extension PokemonDTO {
     func mapToNSPokemon() -> NSPokemon {
+       
         let pokemon = NSPokemon(context: Repository.shared.persistentContainer.viewContext)
         pokemon.nickName = self.nickName
         pokemon.pokemonName = self.pokemonName
-        pokemon.image = self.pokemonDisplay.absoluteString
+        pokemon.imageUrl = self.pokemonDisplay.absoluteString
         pokemon.weight = Float(self.weight)
         
         return pokemon
@@ -28,7 +29,7 @@ extension NSPokemon {
         var toDTO = PokemonDTO(
             nickName: self.nickName!,
             pokemonName: self.pokemonName!,
-            pokemonDisplay: URL(string: self.image!) ?? URL(string: "https://placehold.co/96x96")!,
+            pokemonDisplay: URL(string: self.imageUrl!) ?? URL(string: "https://placehold.co/96x96")!,
             weight: self.weight
         )
         toDTO.id = self.objectID

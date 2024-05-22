@@ -15,12 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func setupNavigationTabBar() -> UITabBarController {
         let uiTabBar = UITabBarController()
         
-        let firstVC = UINavigationController(rootViewController: PokemonShopViewController())
+        let pokemonShop = UINavigationController(rootViewController: PokemonShopViewController())
+        let pokemons = UINavigationController(rootViewController: PokemonsViewController())
         
+        pokemonShop.tabBarItem = UITabBarItem(title: "Pokemon Shop", image: UIImage(systemName: "house"),selectedImage: UIImage(systemName: "house.fill"))
+        pokemons.tabBarItem = UITabBarItem(title: "Pokemons", image: UIImage(named: "paw"),selectedImage: UIImage(named: "paw.fill"))
         
-        firstVC.tabBarItem = UITabBarItem(title: "Pokemons", image: UIImage(systemName: "house"),selectedImage: UIImage(systemName: "house.fill"))
-        
-        uiTabBar.viewControllers = [firstVC]
+        uiTabBar.viewControllers = [pokemonShop, pokemons]
         return uiTabBar
     }
     
