@@ -18,7 +18,6 @@
 		AC15A4EB2BFD0BCA007C7029 /* SavePokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4EA2BFD0BCA007C7029 /* SavePokemon.swift */; };
 		AC15A4ED2BFD0BF1007C7029 /* Pokemon+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15A4EC2BFD0BF1007C7029 /* Pokemon+.swift */; };
 		AC1DF70F2BFC95E3001BEB15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DF70E2BFC95E3001BEB15 /* AppDelegate.swift */; };
-		AC1DF7112BFC95E3001BEB15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DF7102BFC95E3001BEB15 /* SceneDelegate.swift */; };
 		AC1DF7132BFC95E3001BEB15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DF7122BFC95E3001BEB15 /* ViewController.swift */; };
 		AC1DF7182BFC95E5001BEB15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1DF7172BFC95E5001BEB15 /* Assets.xcassets */; };
 		AC1DF71B2BFC95E5001BEB15 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AC1DF71A2BFC95E5001BEB15 /* Base */; };
@@ -27,6 +26,7 @@
 		AC6A4E452BFDCFCC0039B0E1 /* DeletePokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E442BFDCFCC0039B0E1 /* DeletePokemon.swift */; };
 		AC6A4E472BFDD5E90039B0E1 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E462BFDD5E90039B0E1 /* String+.swift */; };
 		AC6A4E492BFDD9530039B0E1 /* NFCScannerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E482BFDD9530039B0E1 /* NFCScannerServices.swift */; };
+		AC6A4E4E2BFDFFEF0039B0E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E4D2BFDFFEF0039B0E1 /* SceneDelegate.swift */; };
 		E22A8311DBB31295406304CB /* Pods_PokeDeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCC6E4706C3BA14564E170D /* Pods_PokeDeck.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +45,6 @@
 		AC15A4EC2BFD0BF1007C7029 /* Pokemon+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Pokemon+.swift"; path = "PokeDeck/Core/Extension/Pokemon+.swift"; sourceTree = SOURCE_ROOT; };
 		AC1DF70B2BFC95E3001BEB15 /* PokeDeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeDeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1DF70E2BFC95E3001BEB15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC1DF7102BFC95E3001BEB15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AC1DF7122BFC95E3001BEB15 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC1DF7172BFC95E5001BEB15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC1DF71A2BFC95E5001BEB15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		AC6A4E442BFDCFCC0039B0E1 /* DeletePokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePokemon.swift; sourceTree = "<group>"; };
 		AC6A4E462BFDD5E90039B0E1 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		AC6A4E482BFDD9530039B0E1 /* NFCScannerServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCScannerServices.swift; sourceTree = "<group>"; };
+		AC6A4E4D2BFDFFEF0039B0E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DA6B0BCDED2456B1C64604D2 /* Pods-PokeDeck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDeck.debug.xcconfig"; path = "Target Support Files/Pods-PokeDeck/Pods-PokeDeck.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,8 +143,8 @@
 		AC15A4C62BFCB56B007C7029 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				AC6A4E4D2BFDFFEF0039B0E1 /* SceneDelegate.swift */,
 				AC1DF70E2BFC95E3001BEB15 /* AppDelegate.swift */,
-				AC1DF7102BFC95E3001BEB15 /* SceneDelegate.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -210,17 +210,33 @@
 		AC1DF70D2BFC95E3001BEB15 /* PokeDeck */ = {
 			isa = PBXGroup;
 			children = (
+				AC6A4E4A2BFDDB570039B0E1 /* Presentation */,
 				AC15A4C62BFCB56B007C7029 /* Config */,
 				AC15A4C52BFCB552007C7029 /* Deprecated */,
 				AC15A4C32BFCA880007C7029 /* Data */,
 				AC15A4C22BFCA848007C7029 /* Domain */,
 				AC15A4BC2BFC9ED0007C7029 /* Core */,
-				AC1DF7122BFC95E3001BEB15 /* ViewController.swift */,
 				AC1DF7172BFC95E5001BEB15 /* Assets.xcassets */,
 				AC1DF71C2BFC95E5001BEB15 /* Info.plist */,
 				AC15A4CD2BFCFD68007C7029 /* PokemonStore.xcdatamodeld */,
 			);
 			path = PokeDeck;
+			sourceTree = "<group>";
+		};
+		AC6A4E4A2BFDDB570039B0E1 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				AC6A4E4B2BFDDB660039B0E1 /* HomePage */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		AC6A4E4B2BFDDB660039B0E1 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				AC1DF7122BFC95E3001BEB15 /* ViewController.swift */,
+			);
+			path = HomePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,8 +346,8 @@
 				AC6A4E492BFDD9530039B0E1 /* NFCScannerServices.swift in Sources */,
 				AC15A4E92BFD0641007C7029 /* FetchAvailablePokemon.swift in Sources */,
 				AC15A4CC2BFCD65D007C7029 /* pokemonList+.swift in Sources */,
+				AC6A4E4E2BFDFFEF0039B0E1 /* SceneDelegate.swift in Sources */,
 				AC6A4E452BFDCFCC0039B0E1 /* DeletePokemon.swift in Sources */,
-				AC1DF7112BFC95E3001BEB15 /* SceneDelegate.swift in Sources */,
 				AC15A4E32BFD061F007C7029 /* Repository.swift in Sources */,
 				AC15A4BF2BFC9F04007C7029 /* Camera+QRService.swift in Sources */,
 				AC6A4E472BFDD5E90039B0E1 /* String+.swift in Sources */,
@@ -406,7 +422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -463,7 +479,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -484,12 +500,11 @@
 				DEVELOPMENT_TEAM = 382VG5FRJK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokeDeck/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow Camera Usage for scanning QR";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -514,12 +529,11 @@
 				DEVELOPMENT_TEAM = 382VG5FRJK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokeDeck/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow Camera Usage for scanning QR";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

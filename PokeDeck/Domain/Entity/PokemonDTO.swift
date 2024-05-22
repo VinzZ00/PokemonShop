@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 struct PokemonDTO {
-    var id : ObjectIdentifier?
+    var id : NSManagedObjectID?
     var nickName : String?
     var pokemonName : String
     var pokemonDisplay : URL

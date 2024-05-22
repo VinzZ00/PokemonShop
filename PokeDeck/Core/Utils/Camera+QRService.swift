@@ -23,7 +23,7 @@ class CameraService : NSObject {
         captureSession = AVCaptureSession()
 //        captureSession.sessionPreset = .medium
         
-        var deviceDiscovery = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualWideCamera], mediaType: .video, position: .back)
+        let deviceDiscovery = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back)
         
         guard let backCam = deviceDiscovery.devices.first else {
             print("No Camera Found")

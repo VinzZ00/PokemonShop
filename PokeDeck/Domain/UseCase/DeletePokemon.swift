@@ -10,7 +10,7 @@ import Foundation
 class DeletePokemon {
     func call(pokemon : PokemonDTO) {
         GetPokemon().call().forEach { p in
-            if p.id == pokemon.id {
+            if p.objectID == pokemon.id {
                 Repository.shared.persistentContainer.viewContext.delete(p)
                 do {
                     try Repository.shared.persistentContainer.viewContext.save()

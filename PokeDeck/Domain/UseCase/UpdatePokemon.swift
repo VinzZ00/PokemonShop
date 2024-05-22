@@ -10,7 +10,7 @@ import Foundation
 class UpdateToCoreData {
     func call(newPokemon : PokemonDTO) {
         GetPokemon().call().forEach { pokemon in
-            if newPokemon.id == pokemon.id {
+            if newPokemon.id == pokemon.objectID {
                 pokemon.nickName = newPokemon.nickName
                 pokemon.weight = newPokemon.weight
                 

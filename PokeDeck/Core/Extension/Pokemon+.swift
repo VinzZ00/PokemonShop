@@ -58,7 +58,7 @@ extension NSPokemon {
             pokemonDisplay: URL(string: self.image!) ?? URL(string: "https://placehold.co/100x100")!,
             weight: self.weight
         )
-        toDTO.id = self.id
+        toDTO.id = self.objectID
         return toDTO
     }
 }
