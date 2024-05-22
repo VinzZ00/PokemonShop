@@ -27,7 +27,7 @@ extension PokemonData {
                 switch result {
                 case .success(let pokemonDetail) :
                     
-                    pokemon = PokemonDTO(nickName: "", pokemonName: pokemonDetail.name, pokemonDisplay: URL(string: pokemonDetail.sprite.front_shiny) ?? URL(string: "https://placehold.co/100x100")! , weight: pokemonDetail.weight)
+                    pokemon = PokemonDTO(nickName: "", pokemonName: pokemonDetail.name, pokemonDisplay: URL(string: pokemonDetail.sprite.front_shiny) ?? URL(string: "https://placehold.co/100x100")! , weight: Float(pokemonDetail.weight))
                     
                 case .failure(let error) :
                     print("error while getting detail pokemon when mapping to pokemon : \(error)")
@@ -40,7 +40,6 @@ extension PokemonData {
 extension PokemonDTO {
     func mapToNSPokemon() -> NSPokemon {
         let pokemon = NSPokemon(context: Repository.shared.persistentContainer.viewContext)
-        
         pokemon.nickName = self.nickName
         pokemon.pokemonName = self.pokemonName
         pokemon.image = self.pokemonDisplay.absoluteString
@@ -49,4 +48,16 @@ extension PokemonDTO {
         return pokemon
     }
     
+}
+
+extension NSPokemon {
+    func mapToPokemonDTO() -> PokemonDTO {
+        var toDTO = PokemonDTO(
+            nickName: self.nickName!,
+            pokemonName: self.pokemonName!,
+            pokemonDisplay: URL(string: self.imageURL!) ?? URL(string: "https://placehold.co/100x100")!,
+            weight: self.weight
+        )
+        toDTO.id = self.id
+    }
 }

@@ -11,6 +11,7 @@ import CoreData
 class Repository {
     
     static let shared = Repository()
+    
     let persistentContainer : NSPersistentContainer = {
         var c = NSPersistentContainer(name: "PokemonStore")
         c.loadPersistentStores { desc, error in
@@ -20,8 +21,6 @@ class Repository {
         }
         return c
     }()
-    
-    
     
     let apiDatasources : PokemonAPIDataSource = PokemonAPIDataSource()
 }

@@ -2,7 +2,6 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23B74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="NSPokemon" representedClassName="NSPokemon" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="String"/>
-        <attribute name="imageURL" optional="YES" attributeType="String"/>
         <attribute name="nickName" optional="YES" attributeType="String"/>
         <attribute name="pokemonName" optional="YES" attributeType="String"/>
         <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>

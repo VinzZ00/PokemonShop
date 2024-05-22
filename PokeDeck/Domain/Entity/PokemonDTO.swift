@@ -7,15 +7,16 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 struct PokemonDTO {
-    let id : UUID = UUID()
+    var id : ObjectIdentifier?
     var nickName : String?
     var pokemonName : String
     var pokemonDisplay : URL
-    var weight : Int
+    var weight : Float
     
-    init(nickName: String, pokemonName: String, pokemonDisplay: URL, weight: Int) {
+    init(nickName: String, pokemonName: String, pokemonDisplay: URL, weight: Float) {
         self.nickName = nickName
         self.pokemonName = pokemonName
         self.pokemonDisplay = pokemonDisplay
