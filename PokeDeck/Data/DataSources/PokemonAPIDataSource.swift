@@ -18,7 +18,7 @@ class PokemonAPIDataSource {
         return url
     }
     
-    func fetchPokemonList(completion : @escaping (Result<[PokemonData], Error>) -> Void) async {
+    func fetchPokemonList(completion : @escaping (Result<[PokemonData], Error>) -> Void) {
         
         // Adding endpoint to the host url
         var urlComponent : URLComponents = URLComponents(url: apiUrl, resolvingAgainstBaseURL: false)!
@@ -74,7 +74,7 @@ class PokemonAPIDataSource {
         
     }
     
-    func fetchPokemonDetail(url : URL, completion: @escaping (Result<Pokemon, Error>) -> Void) async {
+    func fetchPokemonDetail(url : URL, completion: @escaping (Result<Pokemon, Error>) -> Void) {
         
         URLSession.shared.dataTask(with: url) {
             data, response, error in

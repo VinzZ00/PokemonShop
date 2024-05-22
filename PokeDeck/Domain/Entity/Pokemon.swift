@@ -13,7 +13,7 @@ struct PokemonData : Codable {
 }
 
 struct PokemonLists : Codable {
-    let results : [PokemonData]
+    var results : [PokemonData]
 }
 
 struct Pokemon : Decodable {

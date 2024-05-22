@@ -27,6 +27,7 @@
 		AC6A4E472BFDD5E90039B0E1 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E462BFDD5E90039B0E1 /* String+.swift */; };
 		AC6A4E492BFDD9530039B0E1 /* NFCScannerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E482BFDD9530039B0E1 /* NFCScannerServices.swift */; };
 		AC6A4E4E2BFDFFEF0039B0E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E4D2BFDFFEF0039B0E1 /* SceneDelegate.swift */; };
+		AC6A4E512BFE05590039B0E1 /* PokemonShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E502BFE05590039B0E1 /* PokemonShopViewModel.swift */; };
 		E22A8311DBB31295406304CB /* Pods_PokeDeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCC6E4706C3BA14564E170D /* Pods_PokeDeck.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		AC6A4E462BFDD5E90039B0E1 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		AC6A4E482BFDD9530039B0E1 /* NFCScannerServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCScannerServices.swift; sourceTree = "<group>"; };
 		AC6A4E4D2BFDFFEF0039B0E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AC6A4E502BFE05590039B0E1 /* PokemonShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonShopViewModel.swift; sourceTree = "<group>"; };
 		DA6B0BCDED2456B1C64604D2 /* Pods-PokeDeck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDeck.debug.xcconfig"; path = "Target Support Files/Pods-PokeDeck/Pods-PokeDeck.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,17 +228,18 @@
 		AC6A4E4A2BFDDB570039B0E1 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				AC6A4E4B2BFDDB660039B0E1 /* HomePage */,
+				AC6A4E4B2BFDDB660039B0E1 /* PokemonShopList */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		AC6A4E4B2BFDDB660039B0E1 /* HomePage */ = {
+		AC6A4E4B2BFDDB660039B0E1 /* PokemonShopList */ = {
 			isa = PBXGroup;
 			children = (
 				AC1DF7122BFC95E3001BEB15 /* ViewController.swift */,
+				AC6A4E502BFE05590039B0E1 /* PokemonShopViewModel.swift */,
 			);
-			path = HomePage;
+			path = PokemonShopList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +349,7 @@
 				AC6A4E492BFDD9530039B0E1 /* NFCScannerServices.swift in Sources */,
 				AC15A4E92BFD0641007C7029 /* FetchAvailablePokemon.swift in Sources */,
 				AC15A4CC2BFCD65D007C7029 /* pokemonList+.swift in Sources */,
+				AC6A4E512BFE05590039B0E1 /* PokemonShopViewModel.swift in Sources */,
 				AC6A4E4E2BFDFFEF0039B0E1 /* SceneDelegate.swift in Sources */,
 				AC6A4E452BFDCFCC0039B0E1 /* DeletePokemon.swift in Sources */,
 				AC15A4E32BFD061F007C7029 /* Repository.swift in Sources */,
