@@ -16,7 +16,7 @@ struct PokemonDTO {
     var pokemonDisplay : URL
     var weight : Float
     
-    init(nickName: String, pokemonName: String, pokemonDisplay: URL, weight: Float) {
+    init(nickName: String, pokemonName: String, pokemonDisplay: URL = URL(string: "https://fakeimg.pl/96x96")!, weight: Float) {
         self.nickName = nickName
         self.pokemonName = pokemonName
         self.pokemonDisplay = pokemonDisplay

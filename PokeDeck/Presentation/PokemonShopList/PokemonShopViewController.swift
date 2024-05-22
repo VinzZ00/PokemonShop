@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PokemonShopViewController : UIViewController {
     
     var tableViewPokemon = UITableView()
     var viewModel : PokemonShopViewModel = PokemonShopViewModel()
@@ -43,15 +43,18 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController : UITableViewDelegate {
+extension PokemonShopViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("pokemon Name : \(viewModel.pokemonData[indexPath.row])")
         
+        var detailView = PokemonDetailViewController(viewModel: PokemonDetailViewModel(pokemonData: viewModel.pokemonData[indexPath.row]))
+        
+        self.navigationController?.pushViewController(detailView, animated: true)
         //TODO: redirect to the pokemon Detail Page
     }
 }
 
-extension ViewController : UITableViewDataSource {
+extension PokemonShopViewController : UITableViewDataSource {
     
     func setupTableView() {
         self.tableViewPokemon.dataSource = self
