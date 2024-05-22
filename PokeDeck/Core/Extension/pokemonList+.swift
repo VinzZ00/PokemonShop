@@ -13,8 +13,7 @@ extension PokemonLists {
         let decoder = JSONDecoder()
         let pokemonList = try! decoder.decode(PokemonLists.self, from: jsonData)
         let pokemonDatas = pokemonList.results.map {
-            PokemonData(name: $0.name
-                           , url: $0.url)
+            PokemonData(name: $0.name, url: $0.url)
         }
         return pokemonDatas
     }

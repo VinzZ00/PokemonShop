@@ -55,9 +55,10 @@ extension NSPokemon {
         var toDTO = PokemonDTO(
             nickName: self.nickName!,
             pokemonName: self.pokemonName!,
-            pokemonDisplay: URL(string: self.imageURL!) ?? URL(string: "https://placehold.co/100x100")!,
+            pokemonDisplay: URL(string: self.image!) ?? URL(string: "https://placehold.co/100x100")!,
             weight: self.weight
         )
         toDTO.id = self.id
+        return toDTO
     }
 }
