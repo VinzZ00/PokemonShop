@@ -14,16 +14,16 @@ class FetchAvailablePokemon {
         var pokemonData : [PokemonData] = [];
         
         if let localData =  UserDefaults.standard.data(forKey: "pokemonList") {
-            var d = localData
+            let d = localData
             
             // Decoding Data into PokemonData
-            var decoder = JSONDecoder()
+            let decoder = JSONDecoder()
             do {
                 pokemonData = try decoder.decode([PokemonData].self, from: d)
             } catch {
                 
                 // if the local data error then we will replace the data from the remote REST API
-                await repository.apiDatasources.fetchPokemonList { result in
+                repository.apiDatasources.fetchPokemonList { result in
                     
                     switch result {
                     case .success(let pokemonDatas):
@@ -48,7 +48,7 @@ class FetchAvailablePokemon {
             }
             
         } else {
-            await repository.apiDatasources.fetchPokemonList { result in
+            repository.apiDatasources.fetchPokemonList { result in
                 
                 switch result {
                 case .success(let pokemonDatas):

@@ -9,9 +9,9 @@ import Foundation
 
 class SaveToCoreData {
     func call(pokemon : PokemonDTO) {
-        var nsPokemon = pokemon.mapToNSPokemon();
+        let nsPokemon = pokemon.mapToNSPokemon();
         do {
-            try Repository.shared.persistentContainer.viewContext.save()
+            try (nsPokemon.managedObjectContext ?? Repository.shared.persistentContainer.viewContext).save()
         } catch {
             print("Error saving to core data \(error.localizedDescription)")
         }

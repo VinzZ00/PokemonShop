@@ -11,20 +11,38 @@ class PokemonDetailViewController : UIViewController {
     
     var scrollView : UIScrollView = {
         var sv = UIScrollView()
+        
         sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
     }()
     
     var nameLabel : UILabel = {
         var l = UILabel()
+        l.font = UIFont.systemFont(ofSize: 25, weight: .medium)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
     var weightLabel : UILabel = {
         var l = UILabel()
+        l.font = UIFont.systemFont(ofSize: 20)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
+    }()
+    
+    var nickNameField : UITextField  = {
+        var tf = UITextField()
+        
+        tf.borderStyle = .roundedRect
+        tf.placeholder = "What you wanna call your Pokemon"
+        tf.textColor = .black
+        tf.backgroundColor = .white
+        tf.keyboardType = .default
+        tf.returnKeyType = .done
+        tf.isUserInteractionEnabled = true
+
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        return tf
     }()
     
     var contentView : UIView = {
@@ -38,6 +56,21 @@ class PokemonDetailViewController : UIViewController {
         imgView.translatesAutoresizingMaskIntoConstraints = false
         return imgView
     }()
+    
+    var qrImageView : UIImageView = {
+        var imgView : UIImageView = UIImageView()
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        return imgView
+    }()
+    
+    var takeHomeButton : UIButton = {
+        var b = UIButton()
+        b.translatesAutoresizingMaskIntoConstraints = false
+        return b
+    }()
+    
+    
+    
     let viewModel : PokemonDetailViewModel
     
     init(viewModel: PokemonDetailViewModel) {
@@ -53,51 +86,66 @@ class PokemonDetailViewController : UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        contentView.addSubview(pokemonImageView)
+        contentSetup()
+
+        // Do any additional setup after loading the view.
+        viewModel.pokemonImage.receive(on: DispatchQueue.main).sink { image in
+            self.pokemonImageView.image = image
+        }.store(in: &viewModel.cancellables)
         
-        NSLayoutConstraint.activate([
-            pokemonImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            pokemonImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            pokemonImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            pokemonImageView.heightAnchor.constraint(equalToConstant: 200)
-        ])
+        viewModel.pokemonDTO.receive(on: DispatchQueue.main).sink { pokemon in
+            self.nameLabel.text = pokemon.pokemonName
+            self.weightLabel.text = "Weight: \(pokemon.weight)"
+        }.store(in: &viewModel.cancellables)
+        
+    }
+    
+    func contentSetup() {
+        contentView.addSubview(pokemonImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(weightLabel)
+        contentView.addSubview(nickNameField)
         
         scrollView.addSubview(contentView)
-        
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-        ])
-        
         view.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
+            
+            // ScrollView
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            
+            // ContentView
+            contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            
+            // NickNameField
+            nickNameField.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 10),
+            nickNameField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            nickNameField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            nickNameField.heightAnchor.constraint(equalToConstant: 50),
+            
+            // PokemonImageView
+            pokemonImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            pokemonImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            pokemonImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            pokemonImageView.heightAnchor.constraint(equalToConstant: 200),
+            
+            // NameLabel
+            nameLabel.topAnchor.constraint(equalTo: pokemonImageView.bottomAnchor, constant: 10),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
+            // WeightLabel
+            weightLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
+            weightLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            weightLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
-        
-        // Do any additional setup after loading the view.
-        viewModel.pokemonImage.receive(on: DispatchQueue.main).sink { image in
-            print("before : \(self.pokemonImageView.image)")
-            self.pokemonImageView.image = image
-            print("after : \(self.pokemonImageView.image)")
-        }.store(in: &viewModel.cancellables)
     }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -14,7 +14,7 @@ extension String {
         let data = string.data(using: .ascii)
         
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
-            filter.setValue(string, forKey: "InputMessage")
+            filter.setValue(data, forKey: "InputMessage")
             
             let transform = CGAffineTransform(scaleX: 10, y: 10)
             

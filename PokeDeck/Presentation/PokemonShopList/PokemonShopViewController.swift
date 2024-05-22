@@ -45,9 +45,9 @@ class PokemonShopViewController : UIViewController {
 
 extension PokemonShopViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("pokemon Name : \(viewModel.pokemonData[indexPath.row])")
+    
         
-        var detailView = PokemonDetailViewController(viewModel: PokemonDetailViewModel(pokemonData: viewModel.pokemonData[indexPath.row]))
+        let detailView = PokemonDetailViewController(viewModel: PokemonDetailViewModel(pokemonData: viewModel.pokemonData[indexPath.row]))
         
         self.navigationController?.pushViewController(detailView, animated: true)
         //TODO: redirect to the pokemon Detail Page

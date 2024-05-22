@@ -11,9 +11,9 @@ import UIKit
 
 class PokemonDetailViewModel {
 
-    
     var pokemonDTO : CurrentValueSubject<PokemonDTO, Never> = CurrentValueSubject(PokemonDTO(nickName: "", pokemonName: "error retrieving Pokemon name", weight: -1))
     var pokemonImage : CurrentValueSubject<UIImage?, Never>  = CurrentValueSubject(nil)
+    var qrPokemonImageUrl : UIImage = UIImage()
     var nickName = ""
     
     var cancellables = Set<AnyCancellable>()

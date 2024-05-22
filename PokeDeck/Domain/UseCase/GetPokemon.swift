@@ -11,7 +11,7 @@ import CoreData
 class GetPokemon {
     func call() -> [NSPokemon] {
         // get from coredata
-        var fetchReques : NSFetchRequest<NSPokemon> = NSPokemon.fetchRequest()
+        let fetchReques : NSFetchRequest<NSPokemon> = NSPokemon.fetchRequest()
         
         do {
             let pokemons = try Repository.shared.persistentContainer.viewContext.fetch(fetchReques)

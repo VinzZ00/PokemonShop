@@ -26,7 +26,7 @@ extension PokemonShopViewModel{
                 self.pokemonList.send(p)
                 break
             case .failure(let err) :
-                print("error when fetching data")
+                print("error when fetching data Error :  \(err)")
             }
             
         }

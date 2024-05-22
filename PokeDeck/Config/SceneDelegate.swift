@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func setupNavigationTabBar() -> UITabBarController {
-        var uiTabBar = UITabBarController()
+        let uiTabBar = UITabBarController()
         
         let firstVC = UINavigationController(rootViewController: PokemonShopViewController())
         
