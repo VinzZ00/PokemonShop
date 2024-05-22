@@ -9,23 +9,16 @@ import UIKit
 
 class PokemonDetailViewController : UIViewController {
     
-    var scrollView : UIScrollView = {
-        var sv = UIScrollView()
-        
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        return sv
-    }()
-    
     var nameLabel : UILabel = {
         var l = UILabel()
-        l.font = UIFont.systemFont(ofSize: 25, weight: .medium)
+        l.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
     
     var weightLabel : UILabel = {
         var l = UILabel()
-        l.font = UIFont.systemFont(ofSize: 20)
+        l.font = UIFont.systemFont(ofSize: 16)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
@@ -63,14 +56,6 @@ class PokemonDetailViewController : UIViewController {
         return imgView
     }()
     
-    var takeHomeButton : UIButton = {
-        var b = UIButton()
-        b.translatesAutoresizingMaskIntoConstraints = false
-        return b
-    }()
-    
-    
-    
     let viewModel : PokemonDetailViewModel
     
     init(viewModel: PokemonDetailViewModel) {
@@ -85,6 +70,7 @@ class PokemonDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(savePokemon(sender:)))
         
         contentSetup()
 
@@ -96,8 +82,14 @@ class PokemonDetailViewController : UIViewController {
         viewModel.pokemonDTO.receive(on: DispatchQueue.main).sink { pokemon in
             self.nameLabel.text = pokemon.pokemonName
             self.weightLabel.text = "Weight: \(pokemon.weight)"
+            self.qrImageView.image = pokemon.pokemonDisplay.absoluteString.generateQRCode() ?? UIImage(systemName: "qrcode")!
         }.store(in: &viewModel.cancellables)
         
+    }
+    
+    @objc func savePokemon(sender: UIBarButtonItem) {
+        viewModel.savePokemon(nName: nickNameField.text ?? "")
+        self.navigationController?.popViewController(animated: true)
     }
     
     func contentSetup() {
@@ -105,17 +97,11 @@ class PokemonDetailViewController : UIViewController {
         contentView.addSubview(nameLabel)
         contentView.addSubview(weightLabel)
         contentView.addSubview(nickNameField)
+        contentView.addSubview(qrImageView)
         
-        scrollView.addSubview(contentView)
-        view.addSubview(scrollView)
+        view.addSubview(contentView)
         
         NSLayoutConstraint.activate([
-            
-            // ScrollView
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
             // ContentView
             contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -133,7 +119,7 @@ class PokemonDetailViewController : UIViewController {
             pokemonImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             pokemonImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pokemonImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            pokemonImageView.heightAnchor.constraint(equalToConstant: 200),
+            pokemonImageView.heightAnchor.constraint(equalToConstant: 180),
             
             // NameLabel
             nameLabel.topAnchor.constraint(equalTo: pokemonImageView.bottomAnchor, constant: 10),
@@ -144,6 +130,12 @@ class PokemonDetailViewController : UIViewController {
             weightLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
             weightLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             weightLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
+            //QRCodeImageView
+            qrImageView.topAnchor.constraint(equalTo: nickNameField.bottomAnchor, constant: 10),
+            qrImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            qrImageView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
         ])
     }
 

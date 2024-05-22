@@ -53,6 +53,12 @@ class PokemonDetailViewModel {
 }
 
 extension PokemonDetailViewModel {
+    func savePokemon(nName : String) {
+        var pokemonDTO = self.pokemonDTO.value
+        pokemonDTO.nickName = nName
+        SaveToCoreData().call(pokemon: pokemonDTO)
+    }
+    
     func fetchPokemonImage(url: URL) {
         var uiImage : UIImage? = nil
         URLSession.shared.dataTask(with: url) { data, resp, err in

@@ -1,6 +1,5 @@
 import UIKit
 
-
 var apitUrl : URL {
     guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon")
     else {
@@ -8,8 +7,6 @@ var apitUrl : URL {
     }
     return url
 }
-
-
 
 print(apitUrl.lastPathComponent)
 print(apitUrl.appending(queryItems: "limit=151")

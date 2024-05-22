@@ -10,13 +10,13 @@ import CoreImage
 import UIKit
 
 extension String {
-    func generateQRCode(from string: String) -> UIImage? {
-        let data = string.data(using: .ascii)
+    func generateQRCode(/*from string: String*/) -> UIImage? {
+        let data = self.data(using: .ascii)
         
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "InputMessage")
             
-            let transform = CGAffineTransform(scaleX: 10, y: 10)
+            let transform = CGAffineTransform(scaleX: 2, y: 7)
             
             if let output = filter.outputImage?.transformed(by: transform) {
                 return UIImage(ciImage: output)
