@@ -75,7 +75,7 @@ class PokemonSheetViewController: UIViewController {
             .subscribe(on: MainScheduler.instance)
             .subscribe({ event in
                 switch event {
-                case .next(var img) :
+                case .next(let img) :
                     self.imageView.image = img
                 default :
                     break

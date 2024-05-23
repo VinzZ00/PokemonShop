@@ -72,7 +72,6 @@ class PokemonHomeDetailViewController: UIViewController {
         b.translatesAutoresizingMaskIntoConstraints = false
         b.tag = 1
         
-        b.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         return b
     }()
     
@@ -85,7 +84,7 @@ class PokemonHomeDetailViewController: UIViewController {
         b.translatesAutoresizingMaskIntoConstraints = false
         b.tag = 2
         
-        b.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        
         return b
     }()
     
@@ -145,6 +144,9 @@ extension PokemonHomeDetailViewController {
         
         view.addSubview(updateButton)
         view.addSubview(deleteButton)
+        
+        updateButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             // UIImage
