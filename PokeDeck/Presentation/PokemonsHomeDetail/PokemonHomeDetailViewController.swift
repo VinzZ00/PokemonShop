@@ -70,7 +70,7 @@ class PokemonHomeDetailViewController: UIViewController {
         b.translatesAutoresizingMaskIntoConstraints = false
         b.tag = 1
         
-        b.addTarget(PokemonHomeDetailViewController.self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        b.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         return b
     }()
     
@@ -83,7 +83,7 @@ class PokemonHomeDetailViewController: UIViewController {
         b.translatesAutoresizingMaskIntoConstraints = false
         b.tag = 2
         
-        b.addTarget(PokemonHomeDetailViewController.self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        b.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         return b
     }()
     
