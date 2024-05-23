@@ -11,6 +11,8 @@ import UIKit
 
 class PokemonSheetViewModel {
     
+    var nfcReader : NFCScannerServices = NFCScannerServices.shared
+    
     var image : CurrentValueSubject<UIImage?, Never> = CurrentValueSubject(nil)
     var cancellables = Set<AnyCancellable>()
     

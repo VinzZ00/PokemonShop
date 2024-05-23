@@ -24,6 +24,13 @@ class PokemonSheetViewController: UIViewController {
         return img
     }()
     
+    var nfcTag : UILabel = {
+        var l = UILabel()
+        l.translatesAutoresizingMaskIntoConstraints = false
+        l.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        return l
+    }()
+    
     var url : String
     
     init(url: String) {
@@ -42,12 +49,16 @@ class PokemonSheetViewController: UIViewController {
         view.backgroundColor = .white
         view.layer.cornerRadius = 20
         view.addSubview(imageView)
+        view.addSubview(nfcTag)
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            imageView.bottomAnchor.constraint(equalTo: nfcTag.topAnchor, constant: -10),
+            
+            nfcTag.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            nfcTag.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
@@ -65,6 +76,9 @@ class PokemonSheetViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         viewModel.fetchImage(url: self.url)
+        viewModel.nfcReader.setup { nfcTag in
+            
+        }
     }
     
     @objc func handlePanGesture(_ sender : UIPanGestureRecognizer) {

@@ -13,8 +13,17 @@ class NFCScannerServices : NSObject, NFCNDEFReaderSessionDelegate {
     static let shared = NFCScannerServices()
     
     var nfcSession : NFCNDEFReaderSession!
+    var completion : ((String) -> Void)?
     
-    func setup() {
+    func setup(completion : @escaping (String) -> Void) {
+        
+        guard NFCNDEFReaderSession.readingAvailable else {
+            print("NFC capability is not available in this apps or device")
+            return
+        }
+        
+        self.completion = completion
+        
         nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
         nfcSession.alertMessage = "Hold your Iphone near the NFC tag to scan it"
         nfcSession.begin()
@@ -38,6 +47,8 @@ class NFCScannerServices : NSObject, NFCNDEFReaderSessionDelegate {
                 if let string = String(data: record.payload, encoding: .utf8) {
                     print("NFC Card Detected !")
                     print("NFC Tag : \(string)")
+                    
+                    self.completion?(string);
                 }
             }
         }
