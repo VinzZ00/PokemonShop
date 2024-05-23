@@ -15,6 +15,8 @@ class NFCScannerServices : NSObject, NFCNDEFReaderSessionDelegate {
     var nfcSession : NFCNDEFReaderSession!
     var completion : ((String) -> Void)?
     
+    private override init() {}
+    
     func setup(completion : @escaping (String) -> Void) {
         
         guard NFCNDEFReaderSession.readingAvailable else {

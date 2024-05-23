@@ -12,6 +12,8 @@ class Repository {
     
     static let shared = Repository()
     
+    private init() {}
+    
     let persistentContainer : NSPersistentContainer = {
         var c = NSPersistentContainer(name: "PokemonStore")
         c.loadPersistentStores { desc, error in

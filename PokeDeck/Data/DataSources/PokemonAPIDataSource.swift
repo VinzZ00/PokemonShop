@@ -12,6 +12,7 @@ class PokemonAPIDataSource {
     static let shared = PokemonAPIDataSource();
     
     var apiUrl : URL {
+        
         guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon")
         else {
             fatalError("API Host has failed to connect")

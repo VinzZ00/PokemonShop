@@ -17,6 +17,8 @@ class CameraService : NSObject {
     
     static let shared = CameraService()
     
+    private override init() {}
+    
     func setup(handleQRCode : @escaping (String) -> Void) {
         self.handleQRCode = handleQRCode;
         captureSession = AVCaptureSession()

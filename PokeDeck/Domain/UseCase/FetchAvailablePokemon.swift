@@ -8,7 +8,7 @@
 import Foundation
 
 class FetchAvailablePokemon {
-    let repository = Repository();
+    let repository = Repository.shared;
     
     func fetch() -> [PokemonData]  {
         var pokemonData : [PokemonData] = [];
