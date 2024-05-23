@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class PokemonsHomeViewController: UIViewController {
 
@@ -29,18 +30,17 @@ class PokemonsHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         title = "Your Pokemons"
         setupCollection()
         
         // Do any additional setup after loading the view.
         viewModel.pokemonsDTO
-            .receive(on: DispatchQueue.main)
-            .sink { pokemons in
-                self.viewModel.pokemonData = pokemons
-                self.pokemonCollection.reloadData()
-            }
-            .store(in: &viewModel.cancellables)
+            .observe(on: MainScheduler.instance)
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] pokemons in
+                self?.viewModel.pokemonData = pokemons
+                self?.pokemonCollection.reloadData()
+            }).disposed(by: viewModel.cancellables)
     }
     
     override func viewDidAppear(_ animated: Bool) {

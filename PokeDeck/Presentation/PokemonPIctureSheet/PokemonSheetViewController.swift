@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol PokemonSheetViewControllerDelegate: AnyObject {
     func didDismissModalViewController()
@@ -47,7 +48,7 @@ class PokemonSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+
         view.layer.cornerRadius = 20
         view.addSubview(imageView)
         view.addSubview(nfcTag)
@@ -69,10 +70,17 @@ class PokemonSheetViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         viewModel.image
-            .receive(on: DispatchQueue.main)
-            .sink { img in
-                self.imageView.image = img
-            }.store(in: &viewModel.cancellables)
+            .observe(on: MainScheduler.instance)
+            .subscribe(on: MainScheduler.instance)
+            .subscribe({ event in
+                switch event {
+                case .next(var img) :
+                    self.imageView.image = img
+                default :
+                    break
+                }
+            })
+            .disposed(by: viewModel.cancellables)
     }
     
     override func viewDidAppear(_ animated: Bool) {

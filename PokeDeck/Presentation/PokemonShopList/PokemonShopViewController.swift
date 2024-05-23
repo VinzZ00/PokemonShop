@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class PokemonShopViewController : UIViewController {
     
@@ -17,7 +18,7 @@ class PokemonShopViewController : UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Pokemon Shop"
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .white
+
         
         view.addSubview(tableViewPokemon)
         tableViewPokemon.translatesAutoresizingMaskIntoConstraints = false
@@ -30,11 +31,18 @@ class PokemonShopViewController : UIViewController {
         ])
         
         viewModel.pokemonList
-            .receive(on: DispatchQueue.main)
-            .sink { p in
-                self.viewModel.pokemonData = p
+            .observe(on: MainScheduler.instance)
+            .subscribe(on: MainScheduler.instance)
+            .subscribe { pokemonsData in
+                self.viewModel.pokemonData = pokemonsData
                 self.tableViewPokemon.reloadData()
-            }.store(in: &viewModel.cancellables)
+            }.disposed(by: viewModel.cancellables)
+
+//            .receive(on: DispatchQueue.main)
+//            .sink { p in
+//                self.viewModel.pokemonData = p
+//                self.tableViewPokemon.reloadData()
+//            }.store(in: &viewModel.cancellables)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,7 +57,7 @@ extension PokemonShopViewController : UITableViewDelegate {
         let detailView = PokemonDetailViewController(viewModel: PokemonDetailViewModel(pokemonData: viewModel.pokemonData[indexPath.row]))
         
         self.navigationController?.pushViewController(detailView, animated: true)
-        //TODO: redirect to the pokemon Detail Page
+        
     }
 }
 

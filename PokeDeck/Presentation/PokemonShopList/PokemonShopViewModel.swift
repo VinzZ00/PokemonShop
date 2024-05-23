@@ -6,29 +6,32 @@
 //
 
 import Foundation
-import Combine
+//import Combine
+import RxSwift
+
 class PokemonShopViewModel {
     var pokemonData : [PokemonData]  = []
     
     var repository = Repository.shared
-    var pokemonList : CurrentValueSubject<[PokemonData], Never> = CurrentValueSubject([])
-    var cancellables = Set<AnyCancellable>()
+    var pokemonList : BehaviorSubject<[PokemonData]> = BehaviorSubject(value: [])
+    var cancellables = DisposeBag()
     
 }
 
 extension PokemonShopViewModel{
     func fetchPokemonList() {
-        self.repository.apiDatasources.fetchPokemonList{
-            result in
-            switch result {
-            case .success(let p) :
-                //TODO: populate the pokemonData
-                self.pokemonList.send(p)
-                break
-            case .failure(let err) :
-                print("error when fetching data Error :  \(err)")
-            }
-            
-        }
+//        var pokemons = FetchAvailablePokemon().fetch()
+        self.pokemonList.onNext(FetchAvailablePokemon().fetch())
+//        self.repository.apiDatasources.fetchPokemonList{
+//            result in
+//            switch result {
+//            case .success(let p) :
+//                self.pokemonList.onNext(p)
+//                break
+//            case .failure(let err) :
+//                print("error when fetching data Error :  \(err)")
+//            }
+//            
+//        }
     }
 }

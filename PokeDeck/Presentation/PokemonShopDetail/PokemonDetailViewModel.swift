@@ -6,17 +6,19 @@
 //
 
 import Foundation
-import Combine
+
+import RxSwift
+import RxCocoa
 import UIKit
 
 class PokemonDetailViewModel {
 
-    var pokemonDTO : CurrentValueSubject<PokemonDTO, Never> = CurrentValueSubject(PokemonDTO(nickName: "", pokemonName: "error retrieving Pokemon name", weight: -1))
-    var pokemonImage : CurrentValueSubject<UIImage?, Never>  = CurrentValueSubject(nil)
+    var pokemonDTO : BehaviorSubject<PokemonDTO> = BehaviorSubject(value: PokemonDTO(nickName: "", pokemonName: "error retrieving Pokemon name", weight: -1))
+    var pokemonImage : BehaviorSubject<UIImage?>  = BehaviorSubject(value: nil)
     var qrPokemonImageUrl : UIImage = UIImage()
     var nickName = ""
     
-    var cancellables = Set<AnyCancellable>()
+    var cancellables = DisposeBag()
     
     
     init(pokemonData : PokemonData) {
@@ -34,7 +36,7 @@ class PokemonDetailViewModel {
                 case .success(let pokemonDetail) :
                     
                     let pokemon = PokemonDTO(nickName: "", pokemonName: pokemonDetail.name, pokemonDisplay: URL(string: pokemonDetail.sprites.front_shiny) ?? URL(string: "https://placehold.co/96x96")! , weight: Float(pokemonDetail.weight))
-                    self.pokemonDTO.send(pokemon)
+                    self.pokemonDTO.onNext(pokemon)
                     
                 case .failure(let error) :
                     print("error while getting detail pokemon when mapping to pokemon : \(error)")
@@ -42,22 +44,27 @@ class PokemonDetailViewModel {
             }
         
         self.pokemonDTO
-            .map { $0.pokemonDisplay }
-            .sink(receiveValue: {
-                [weak self] url in
-                guard let self = self else { return }
-                Repository.shared.apiDatasources.fetchPokemonImage(url: url) { uiImage in
-                    self.pokemonImage.send(uiImage)
-                }
-            })
-            .store(in: &cancellables)
+            .subscribe(onNext: { [weak self]
+            pokemonDTO in
+            guard let self = self else { return }
+            var url = pokemonDTO.pokemonDisplay
+            Repository.shared.apiDatasources.fetchPokemonImage(url: url) { uiImage in
+                self.pokemonImage.onNext(uiImage)
+            }
+            }).disposed(by: cancellables)
     }
 }
 
 extension PokemonDetailViewModel {
     func savePokemon(nName : String) {
-        var pokemonDTO = self.pokemonDTO.value
-        pokemonDTO.nickName = nName
-        SaveToCoreData().call(pokemon: pokemonDTO)
+        guard var currentPokemonDTO = try? pokemonDTO.value() else {
+            print("Error while retrieving current Pokemon DTO in PoKemonDTO")
+            return
+        }
+
+        currentPokemonDTO.nickName = nName
+        pokemonDTO.onNext(currentPokemonDTO)
+        
+        SaveToCoreData().call(pokemon: currentPokemonDTO)
     }
 }

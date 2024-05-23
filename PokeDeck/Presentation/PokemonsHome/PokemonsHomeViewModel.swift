@@ -7,15 +7,16 @@
 
 import Foundation
 import UIKit
-import Combine
+import RxSwift
+
 
 class PokemonsHomeViewModel {
     
-    var pokemonsDTO : CurrentValueSubject<[(PokemonDTO, UIImage)], Never> = CurrentValueSubject([])
+    var pokemonsDTO : BehaviorSubject<[(PokemonDTO, UIImage)]> = BehaviorSubject(value: [])
     
     var pokemonData : [(PokemonDTO, UIImage)] = []
     
-    var cancellables = Set<AnyCancellable>()
+    var cancellables = DisposeBag()
     
     func getAllPokemon() {
         var arr : [(PokemonDTO, UIImage)] = []
@@ -27,7 +28,7 @@ class PokemonsHomeViewModel {
                     if let img = img {
                         let tupples = (pokemon.mapToPokemonDTO(), img)
                         arr.append(tupples)
-                        self.pokemonsDTO.send(arr)
+                        self.pokemonsDTO.on(.next(arr))
                     }
                 }
         }

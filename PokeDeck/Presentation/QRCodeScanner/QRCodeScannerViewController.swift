@@ -15,7 +15,6 @@ class QRCodeScannerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         // Setup the camera service
         cameraService.setup { qrCodeUrl in
             // Handle the QR code string here

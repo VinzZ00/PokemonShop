@@ -34,7 +34,6 @@
 		AC6A4E452BFDCFCC0039B0E1 /* DeleteFromCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E442BFDCFCC0039B0E1 /* DeleteFromCoreData.swift */; };
 		AC6A4E472BFDD5E90039B0E1 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E462BFDD5E90039B0E1 /* String+.swift */; };
 		AC6A4E492BFDD9530039B0E1 /* NFCScannerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E482BFDD9530039B0E1 /* NFCScannerServices.swift */; };
-		AC6A4E4E2BFDFFEF0039B0E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E4D2BFDFFEF0039B0E1 /* SceneDelegate.swift */; };
 		AC6A4E512BFE05590039B0E1 /* PokemonShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A4E502BFE05590039B0E1 /* PokemonShopViewModel.swift */; };
 		AC8A9F302BFE33DB00FF3F56 /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A9F2F2BFE33DB00FF3F56 /* PokemonDetailViewController.swift */; };
 		AC8A9F322BFE3A3300FF3F56 /* PokemonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A9F312BFE3A3300FF3F56 /* PokemonDetailViewModel.swift */; };
@@ -73,7 +72,6 @@
 		AC6A4E442BFDCFCC0039B0E1 /* DeleteFromCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFromCoreData.swift; sourceTree = "<group>"; };
 		AC6A4E462BFDD5E90039B0E1 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		AC6A4E482BFDD9530039B0E1 /* NFCScannerServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCScannerServices.swift; sourceTree = "<group>"; };
-		AC6A4E4D2BFDFFEF0039B0E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AC6A4E502BFE05590039B0E1 /* PokemonShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonShopViewModel.swift; sourceTree = "<group>"; };
 		AC8A9F2F2BFE33DB00FF3F56 /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 		AC8A9F312BFE3A3300FF3F56 /* PokemonDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewModel.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 		AC15A4C62BFCB56B007C7029 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				AC6A4E4D2BFDFFEF0039B0E1 /* SceneDelegate.swift */,
 				AC1DF70E2BFC95E3001BEB15 /* AppDelegate.swift */,
 			);
 			path = Config;
@@ -331,6 +328,7 @@
 				AC1DF7072BFC95E3001BEB15 /* Sources */,
 				AC1DF7082BFC95E3001BEB15 /* Frameworks */,
 				AC1DF7092BFC95E3001BEB15 /* Resources */,
+				773B68B25AEE5FD5C1A52718 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -387,6 +385,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		773B68B25AEE5FD5C1A52718 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PokeDeck/Pods-PokeDeck-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PokeDeck/Pods-PokeDeck-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PokeDeck/Pods-PokeDeck-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D88973AD0D4B0916C647FAE4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -433,7 +448,6 @@
 				AC15A4CC2BFCD65D007C7029 /* pokemonList+.swift in Sources */,
 				AC6A4E512BFE05590039B0E1 /* PokemonShopViewModel.swift in Sources */,
 				AC5AFF912BFF56810081C103 /* PokemonSheetViewController.swift in Sources */,
-				AC6A4E4E2BFDFFEF0039B0E1 /* SceneDelegate.swift in Sources */,
 				AC6A4E452BFDCFCC0039B0E1 /* DeleteFromCoreData.swift in Sources */,
 				AC8A9F322BFE3A3300FF3F56 /* PokemonDetailViewModel.swift in Sources */,
 				AC8A9F302BFE33DB00FF3F56 /* PokemonDetailViewController.swift in Sources */,
@@ -514,7 +528,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -571,7 +585,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -590,6 +604,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 382VG5FRJK;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokeDeck/Info.plist;
 				INFOPLIST_KEY_NFCReaderUsageDescription = "Please Allow NFC Scanner to scanning NFC Card";
@@ -597,7 +612,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -620,6 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 382VG5FRJK;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokeDeck/Info.plist;
 				INFOPLIST_KEY_NFCReaderUsageDescription = "Please Allow NFC Scanner to scanning NFC Card";
@@ -627,7 +644,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

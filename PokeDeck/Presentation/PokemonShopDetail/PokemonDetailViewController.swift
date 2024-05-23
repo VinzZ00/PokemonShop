@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class PokemonDetailViewController : UIViewController {
     
@@ -67,7 +68,7 @@ class PokemonDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+
         
         nickNameField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(savePokemon(sender:)))
@@ -75,15 +76,32 @@ class PokemonDetailViewController : UIViewController {
         contentSetup()
 
         // Do any additional setup after loading the view.
-        viewModel.pokemonImage.receive(on: DispatchQueue.main).sink { image in
-            self.pokemonImageView.image = image
-        }.store(in: &viewModel.cancellables)
+        viewModel.pokemonImage
+            .observe(on: MainScheduler.instance)
+            .subscribe(on: MainScheduler.instance)
+            .subscribe { img in
+                self.pokemonImageView.image = img
+            }.disposed(by: viewModel.cancellables)
+            
+//            .receive(on: DispatchQueue.main).sink { image in
+//            self.pokemonImageView.image = image
+//        }.store(in: &viewModel.cancellables)
         
-        viewModel.pokemonDTO.receive(on: DispatchQueue.main).sink { pokemon in
-            self.nameLabel.text = pokemon.pokemonName
-            self.weightLabel.text = "Weight: \(pokemon.weight)"
-            self.qrImageView.image = pokemon.pokemonDisplay.absoluteString.generateQRCode() ?? UIImage(systemName: "qrcode")!
-        }.store(in: &viewModel.cancellables)
+        viewModel.pokemonDTO
+            .observe(on: MainScheduler.instance)
+            .subscribe(on: MainScheduler.instance)
+            .subscribe { pokemon in
+                self.nameLabel.text = pokemon.pokemonName
+                self.weightLabel.text = "Weight: \(pokemon.weight)"
+                self.qrImageView.image = pokemon.pokemonDisplay.absoluteString.generateQRCode() ?? UIImage(named: "qrcode")!
+                
+                
+            }
+//            .receive(on: DispatchQueue.main).sink { pokemon in
+//            self.nameLabel.text = pokemon.pokemonName
+//            self.weightLabel.text = "Weight: \(pokemon.weight)"
+//            self.qrImageView.image = pokemon.pokemonDisplay.absoluteString.generateQRCode() ?? UIImage(systemName: "qrcode")!
+//        }.store(in: &viewModel.cancellables)
         
     }
     
