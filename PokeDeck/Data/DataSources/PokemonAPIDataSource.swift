@@ -118,7 +118,7 @@ class PokemonAPIDataSource {
         var uiImage : UIImage? = nil
         URLSession.shared.dataTask(with: url) { data, resp, err in
             if let err = err {
-                print("masuk ke sini Error \(err)")
+                print("Error \(err)")
                 return
             }
             

@@ -28,10 +28,13 @@ class PokemonsHomeViewModel {
                     if let img = img {
                         let tupples = (pokemon.mapToPokemonDTO(), img)
                         arr.append(tupples)
+                        print("dalam getAllPokemon")
                         self.pokemonsDTO.on(.next(arr))
                     }
                 }
+            self.pokemonsDTO.on(.next(arr))
         }
+        
         
         
     }

@@ -40,6 +40,9 @@ class PokemonsHomeViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] pokemons in
+                
+                print("Pokemons : \(pokemons.count)")
+                
                 self?.viewModel.pokemonData = pokemons
                 self?.pokemonCollection.reloadData()
             }).disposed(by: viewModel.cancellables)
@@ -96,7 +99,13 @@ extension PokemonsHomeViewController : UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        print("Selected \(viewModel.pokemonData[indexPath.row].0.nickName)")
         let vm = PokemonHomeDetailViewModel(pokemonDTO: viewModel.pokemonData[indexPath.row].0, pokemonImage: viewModel.pokemonData[indexPath.row].1)
-        let vc = PokemonHomeDetailViewController(viewModel: vm)
+        let vc = PokemonHomeDetailViewController(viewModel: vm) {
+            pokemon in
+            self.viewModel.pokemonData.removeAll { pd in
+                pokemon.id == pd.0.id
+            }
+            self.pokemonCollection.reloadData()
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     

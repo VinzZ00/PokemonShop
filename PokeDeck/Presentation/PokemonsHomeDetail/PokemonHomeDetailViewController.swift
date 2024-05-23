@@ -10,9 +10,11 @@ import UIKit
 class PokemonHomeDetailViewController: UIViewController {
     
     let viewModel : PokemonHomeDetailViewModel
+    let onDismiss : (PokemonDTO) -> Void
     
-    init(viewModel: PokemonHomeDetailViewModel) {
+    init(viewModel: PokemonHomeDetailViewModel, onDismiss : @escaping (PokemonDTO) -> Void) {
         self.viewModel = viewModel
+        self.onDismiss = onDismiss
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -103,6 +105,9 @@ class PokemonHomeDetailViewController: UIViewController {
             navigationController?.popViewController(animated: true)
         } else if sender.tag == 2 { // Delete Button
             viewModel.delete()
+            
+            onDismiss(viewModel.pokemonDTO)
+            
             navigationController?.popViewController(animated: true)
         }
     }
