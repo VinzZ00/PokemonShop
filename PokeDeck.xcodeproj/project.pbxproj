@@ -592,6 +592,7 @@
 				DEVELOPMENT_TEAM = 382VG5FRJK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokeDeck/Info.plist;
+				INFOPLIST_KEY_NFCReaderUsageDescription = "Please Allow NFC Scanner to scanning NFC Card";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow Camera Usage for scanning QR";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -621,6 +622,7 @@
 				DEVELOPMENT_TEAM = 382VG5FRJK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokeDeck/Info.plist;
+				INFOPLIST_KEY_NFCReaderUsageDescription = "Please Allow NFC Scanner to scanning NFC Card";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow Camera Usage for scanning QR";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
