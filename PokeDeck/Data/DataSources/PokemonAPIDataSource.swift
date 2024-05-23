@@ -51,6 +51,7 @@ class PokemonAPIDataSource {
                 
                 UserDefaults.standard.set(encodedPokemonData, forKey: "pokemonList")
                 
+                
                 completion(.success(pokemonDatas))
             } catch {
                 completion(.failure(error))

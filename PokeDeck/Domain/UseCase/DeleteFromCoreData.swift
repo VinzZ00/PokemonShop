@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DeletePokemon {
+class DeleteFromCoreData {
     func call(pokemon : PokemonDTO) {
         GetPokemon().call().forEach { p in
             if p.objectID == pokemon.id {

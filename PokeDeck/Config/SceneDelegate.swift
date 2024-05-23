@@ -11,19 +11,6 @@ import Foundation
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-    func setupNavigationTabBar() -> UITabBarController {
-        let uiTabBar = UITabBarController()
-        
-        let pokemonShop = UINavigationController(rootViewController: PokemonShopViewController())
-        let pokemons = UINavigationController(rootViewController: PokemonsViewController())
-        
-        pokemonShop.tabBarItem = UITabBarItem(title: "Pokemon Shop", image: UIImage(systemName: "house"),selectedImage: UIImage(systemName: "house.fill"))
-        pokemons.tabBarItem = UITabBarItem(title: "Pokemons", image: UIImage(named: "paw"),selectedImage: UIImage(named: "paw.fill"))
-        
-        uiTabBar.viewControllers = [pokemonShop, pokemons]
-        return uiTabBar
-    }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -67,3 +54,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension SceneDelegate {
+    
+//    func setupPokemonsHomeViewController() -> UIViewController{
+//        let viewModel = PokemonsHomeViewModel()
+//        
+//        let vc = UINavigationController(rootViewController: PokemonsHomeViewController(viewModel: viewModel))
+//        return vc
+//    }
+    
+    func setupNavigationTabBar() -> UITabBarController {
+        let uiTabBar = UITabBarController()
+        
+        let pokemonShop = UINavigationController(rootViewController: PokemonShopViewController())
+//        let pokemonsViewController = setupPokemonsHomeViewController()
+        let pokemonsHome = UINavigationController(rootViewController: PokemonsHomeViewController())
+        
+        
+        pokemonShop.tabBarItem = UITabBarItem(title: "Pokemon Shop", image: UIImage(systemName: "house"),selectedImage: UIImage(systemName: "house.fill"))
+        pokemonsHome.tabBarItem = UITabBarItem(title: "Pokemons", image: UIImage(named: "paw"),selectedImage: UIImage(named: "paw.fill"))
+        
+        uiTabBar.viewControllers = [pokemonShop, pokemonsHome]
+        return uiTabBar
+    }
+}

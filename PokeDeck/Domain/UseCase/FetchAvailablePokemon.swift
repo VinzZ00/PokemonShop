@@ -15,7 +15,6 @@ class FetchAvailablePokemon {
         
         if let localData =  UserDefaults.standard.data(forKey: "pokemonList") {
             let d = localData
-            
             // Decoding Data into PokemonData
             let decoder = JSONDecoder()
             do {
