@@ -13,13 +13,12 @@ class CameraService : NSObject {
     var captureSession : AVCaptureSession!
     var photoOutput : AVCaptureMetadataOutput!
     var videoPreviewLayer : AVCaptureVideoPreviewLayer!
-    var handleQRCode : (String) -> Void
+    var handleQRCode : ((String) -> Void)!
     
-    init(handleQRCode : @escaping (String) -> Void) {
-        self.handleQRCode = handleQRCode
-    }
+    static let shared = CameraService()
     
-    func setup() {
+    func setup(handleQRCode : @escaping (String) -> Void) {
+        self.handleQRCode = handleQRCode;
         captureSession = AVCaptureSession()
 //        captureSession.sessionPreset = .medium
         
@@ -54,13 +53,22 @@ class CameraService : NSObject {
         return videoPreviewLayer;
     }
     
+    func startRunning() {
+        DispatchQueue.global(qos: .background).async {
+            self.captureSession.startRunning()
+        }
+    }
+    
+    func stopRunning() {
+        captureSession.stopRunning()
+    }
     
 }
 
 extension CameraService : AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        captureSession.stopRunning()
+        stopRunning()
         
         if let metaDataObject = metadataObjects.first {
             guard let readableObject = metaDataObject as? AVMetadataMachineReadableCodeObject else { return }

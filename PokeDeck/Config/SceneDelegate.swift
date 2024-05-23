@@ -56,25 +56,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
     
-//    func setupPokemonsHomeViewController() -> UIViewController{
-//        let viewModel = PokemonsHomeViewModel()
-//        
-//        let vc = UINavigationController(rootViewController: PokemonsHomeViewController(viewModel: viewModel))
-//        return vc
-//    }
-    
     func setupNavigationTabBar() -> UITabBarController {
         let uiTabBar = UITabBarController()
         
         let pokemonShop = UINavigationController(rootViewController: PokemonShopViewController())
-//        let pokemonsViewController = setupPokemonsHomeViewController()
+        let qrCodeScanenrView = UINavigationController(rootViewController: QRCodeScannerViewController())
         let pokemonsHome = UINavigationController(rootViewController: PokemonsHomeViewController())
         
         
         pokemonShop.tabBarItem = UITabBarItem(title: "Pokemon Shop", image: UIImage(systemName: "house"),selectedImage: UIImage(systemName: "house.fill"))
+        qrCodeScanenrView.tabBarItem = UITabBarItem(title: "Scan QR", image: UIImage(systemName: "qrcode.viewfinder"), selectedImage: UIImage(systemName: "qrcode.viewfinder"))
         pokemonsHome.tabBarItem = UITabBarItem(title: "Pokemons", image: UIImage(named: "paw"),selectedImage: UIImage(named: "paw.fill"))
         
-        uiTabBar.viewControllers = [pokemonShop, pokemonsHome]
+        
+        uiTabBar.viewControllers = [pokemonShop, qrCodeScanenrView, pokemonsHome]
         return uiTabBar
     }
 }

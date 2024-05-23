@@ -26,6 +26,7 @@ class PokemonCollectionViewCell : UICollectionViewCell {
 extension PokemonCollectionViewCell {
     func setupCell(data : (PokemonDTO, UIImage)) {
         nameLabel.text = data.0.nickName
+        nameLabel.textAlignment = .center
         imageView.image = data.1
     }
     

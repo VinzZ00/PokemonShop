@@ -31,9 +31,7 @@ class PokemonDetailViewController : UIViewController {
         tf.textColor = .black
         tf.backgroundColor = .white
         tf.keyboardType = .default
-        tf.returnKeyType = .done
         tf.isUserInteractionEnabled = true
-
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -70,6 +68,8 @@ class PokemonDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        nickNameField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(savePokemon(sender:)))
         
         contentSetup()
@@ -140,4 +140,11 @@ class PokemonDetailViewController : UIViewController {
     }
 
     
+}
+
+extension PokemonDetailViewController : UITextFieldDelegate  {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

@@ -28,7 +28,7 @@ class PokemonHomeDetailViewController: UIViewController {
     
     var weightField : UITextField = {
         var tf = UITextField()
-        
+        tf.placeholder = "Pokemon Weight in Kg"
         tf.borderStyle = .roundedRect
         tf.textColor = .black
         tf.backgroundColor = .white
@@ -42,7 +42,7 @@ class PokemonHomeDetailViewController: UIViewController {
     
     var nickNameField : UITextField  = {
         var tf = UITextField()
-        
+        tf.placeholder = "Pokemon Name"
         tf.borderStyle = .roundedRect
         tf.textColor = .black
         tf.backgroundColor = .white
@@ -122,8 +122,12 @@ extension PokemonHomeDetailViewController {
     func configureData() {
         uiimageView.image = viewModel.pokemonImage
         nameLabel.text = viewModel.pokemonDTO.pokemonName
+        
         weightField.text = String(viewModel.pokemonDTO.weight)
         nickNameField.text = viewModel.pokemonDTO.nickName
+        
+        weightField.delegate  = self
+        nickNameField.delegate = self
     }
     
     func setupLayout() {
@@ -170,5 +174,12 @@ extension PokemonHomeDetailViewController {
             deleteButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             deleteButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+}
+
+extension PokemonHomeDetailViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
