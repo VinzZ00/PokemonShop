@@ -69,7 +69,7 @@ class PokemonDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        view.backgroundColor = .white
         nickNameField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(savePokemon(sender:)))
         

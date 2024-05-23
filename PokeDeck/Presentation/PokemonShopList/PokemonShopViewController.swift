@@ -16,6 +16,8 @@ class PokemonShopViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
         navigationItem.title = "Pokemon Shop"
         navigationController?.navigationBar.prefersLargeTitles = true
 
