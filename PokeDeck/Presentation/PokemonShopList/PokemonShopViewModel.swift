@@ -18,17 +18,9 @@ class PokemonShopViewModel {
 
 extension PokemonShopViewModel{
     func fetchPokemonList() {
-        self.repository.apiDatasources.fetchPokemonList{
-            result in
-            switch result {
-            case .success(let p) :
-                //TODO: populate the pokemonData
-                self.pokemonList.send(p)
-                break
-            case .failure(let err) :
-                print("error when fetching data Error :  \(err)")
-            }
-            
-        }
+        self.pokemonList.send(FetchAvailablePokemon().fetch{
+            pokemonData in
+            self.pokemonList.send(pokemonData)
+        })
     }
 }

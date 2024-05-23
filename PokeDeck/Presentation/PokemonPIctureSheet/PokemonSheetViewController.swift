@@ -47,7 +47,7 @@ class PokemonSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
         view.layer.cornerRadius = 20
         view.addSubview(imageView)
         view.addSubview(nfcTag)

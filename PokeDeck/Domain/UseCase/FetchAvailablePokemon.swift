@@ -10,7 +10,7 @@ import Foundation
 class FetchAvailablePokemon {
     let repository = Repository();
     
-    func fetch() -> [PokemonData]  {
+    func fetch(dataSourceCompletion : @escaping ([PokemonData]) -> Void) -> [PokemonData]  {
         var pokemonData : [PokemonData] = [];
         
         if let localData =  UserDefaults.standard.data(forKey: "pokemonList") {
@@ -61,6 +61,7 @@ class FetchAvailablePokemon {
                     }
                     
                     pokemonData = pokemonDatas
+                    dataSourceCompletion(pokemonData)
                     
                 case .failure(let error) :
 
