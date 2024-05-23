@@ -11,6 +11,7 @@ import Foundation
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var blurEffectView: UIVisualEffectView?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -43,12 +44,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        removeBlurEffect()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        
+        addBlurEffect()
     }
 
 
@@ -73,3 +77,22 @@ extension SceneDelegate {
         return uiTabBar
     }
 }
+
+extension SceneDelegate {
+    private func addBlurEffect() {
+        guard let window = window else { return }
+        
+        let blurEffect = UIBlurEffect(style: .light) // Choose the desired blur effect style
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView?.frame = window.bounds
+        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        window.addSubview(blurEffectView!)
+    }
+    
+    private func removeBlurEffect() {
+        blurEffectView?.removeFromSuperview()
+        blurEffectView = nil
+    }
+}
+

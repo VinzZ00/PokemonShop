@@ -10,7 +10,7 @@ import Foundation
 class FetchAvailablePokemon {
     let repository = Repository();
     
-    func fetch() async -> [PokemonData]  {
+    func fetch() -> [PokemonData]  {
         var pokemonData : [PokemonData] = [];
         
         if let localData =  UserDefaults.standard.data(forKey: "pokemonList") {

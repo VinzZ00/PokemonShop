@@ -25,7 +25,7 @@ class PokemonsHomeViewModel {
                 .apiDatasources
                 .fetchPokemonImage(url: URL(string: pokemon.imageUrl!) ?? URL(string:"https://placehold.co/96x96")!) { img in
                     if let img = img {
-                        var tupples = (pokemon.mapToPokemonDTO(), img)
+                        let tupples = (pokemon.mapToPokemonDTO(), img)
                         arr.append(tupples)
                         self.pokemonsDTO.send(arr)
                     }
