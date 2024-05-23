@@ -17,9 +17,12 @@ class QRCodeScannerViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         // Setup the camera service
-        cameraService.setup { qrCodeString in
+        cameraService.setup { qrCodeUrl in
             // Handle the QR code string here
-            print("QR Code: \(qrCodeString)")
+            let modalVc = PokemonSheetViewController(url: qrCodeUrl)
+            modalVc.delegate = self
+            modalVc.modalPresentationStyle = .overFullScreen
+            self.present(modalVc, animated: true)
         }
         
         // Add the AVCaptureVideoPreviewLayer to your view hierarchy
@@ -58,4 +61,11 @@ class QRCodeScannerViewController: UIViewController {
      }
      */
     
+}
+
+extension QRCodeScannerViewController : PokemonSheetViewControllerDelegate {
+
+    func didDismissModalViewController() {
+        cameraService.startRunning()
+    }
 }
