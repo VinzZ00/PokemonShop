@@ -26,6 +26,7 @@ class PokemonSheetViewController: UIViewController {
     
     var nfcTag : UILabel = {
         var l = UILabel()
+        l.text = "NFC Tag : "
         l.translatesAutoresizingMaskIntoConstraints = false
         l.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         return l
@@ -57,7 +58,7 @@ class PokemonSheetViewController: UIViewController {
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: nfcTag.topAnchor, constant: -10),
             
-            nfcTag.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            nfcTag.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             nfcTag.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
@@ -76,8 +77,8 @@ class PokemonSheetViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         viewModel.fetchImage(url: self.url)
-        viewModel.nfcReader.setup { nfcTag in
-            
+        viewModel.nfcReader.setup { t in
+            self.nfcTag.text = "NFC Tag : \(t)"
         }
     }
     
