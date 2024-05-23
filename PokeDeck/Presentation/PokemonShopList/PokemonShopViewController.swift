@@ -18,7 +18,7 @@ class PokemonShopViewController : UIViewController {
         navigationItem.title = "Pokemon Shop"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        
+        view.backgroundColor = .white
         view.addSubview(tableViewPokemon)
         tableViewPokemon.translatesAutoresizingMaskIntoConstraints = false
 

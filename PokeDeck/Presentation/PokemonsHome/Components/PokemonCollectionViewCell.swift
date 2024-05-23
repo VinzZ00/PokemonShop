@@ -33,7 +33,7 @@ extension PokemonCollectionViewCell {
     func setup() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+        backgroundColor = .white
         addSubview(imageView)
         addSubview(nameLabel)
         
