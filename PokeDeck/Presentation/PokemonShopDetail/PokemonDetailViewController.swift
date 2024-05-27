@@ -96,7 +96,7 @@ class PokemonDetailViewController : UIViewController {
                 self.qrImageView.image = pokemon.pokemonDisplay.absoluteString.generateQRCode() ?? UIImage(named: "qrcode")!
                 
                 
-            }
+            }.disposed(by: viewModel.cancellables)
 //            .receive(on: DispatchQueue.main).sink { pokemon in
 //            self.nameLabel.text = pokemon.pokemonName
 //            self.weightLabel.text = "Weight: \(pokemon.weight)"
@@ -111,48 +111,41 @@ class PokemonDetailViewController : UIViewController {
     }
     
     func contentSetup() {
-        contentView.addSubview(pokemonImageView)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(weightLabel)
-        contentView.addSubview(nickNameField)
-        contentView.addSubview(qrImageView)
-        
-        view.addSubview(contentView)
+
+        view.addSubview(pokemonImageView)
+        view.addSubview(nameLabel)
+        view.addSubview(weightLabel)
+        view.addSubview(nickNameField)
+        view.addSubview(qrImageView)
         
         NSLayoutConstraint.activate([
             
-            // ContentView
-            contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            
             // NickNameField
             nickNameField.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 10),
-            nickNameField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            nickNameField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            nickNameField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            nickNameField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             nickNameField.heightAnchor.constraint(equalToConstant: 50),
             
             // PokemonImageView
-            pokemonImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            pokemonImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            pokemonImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            pokemonImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            pokemonImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            pokemonImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             pokemonImageView.heightAnchor.constraint(equalToConstant: 180),
             
             // NameLabel
             nameLabel.topAnchor.constraint(equalTo: pokemonImageView.bottomAnchor, constant: 10),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            nameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
             // WeightLabel
             weightLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            weightLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            weightLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            weightLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            weightLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
             //QRCodeImageView
             qrImageView.topAnchor.constraint(equalTo: nickNameField.bottomAnchor, constant: 10),
-            qrImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            qrImageView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            qrImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            qrImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
         ])
     }

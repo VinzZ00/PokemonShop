@@ -11,7 +11,6 @@ import RxSwift
 
 class PokemonShopViewModel {
     var pokemonData : [PokemonData]  = []
-    
     var repository = Repository.shared
     var pokemonList : BehaviorSubject<[PokemonData]> = BehaviorSubject(value: [])
     var cancellables = DisposeBag()

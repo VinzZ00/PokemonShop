@@ -65,9 +65,9 @@ extension AppDelegate {
         
         
         uiTabBar.viewControllers = [pokemonShop, qrCodeScanenrView, pokemonsHome]
-        uiTabBar.viewControllers?.forEach{
-            $0.view.backgroundColor = .white
-        }
+//        uiTabBar.viewControllers?.forEach{
+//            $0.view.backgroundColor = .white
+//        }
         return uiTabBar
     }
 }

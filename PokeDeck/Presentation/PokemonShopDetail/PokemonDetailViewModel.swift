@@ -47,7 +47,7 @@ class PokemonDetailViewModel {
             .subscribe(onNext: { [weak self]
             pokemonDTO in
             guard let self = self else { return }
-            var url = pokemonDTO.pokemonDisplay
+            let url = pokemonDTO.pokemonDisplay
             Repository.shared.apiDatasources.fetchPokemonImage(url: url) { uiImage in
                 self.pokemonImage.onNext(uiImage)
             }

@@ -10,6 +10,7 @@ import Foundation
 struct PokemonData : Codable {
     let name : String
     let url : String
+    
 }
 
 struct PokemonLists : Codable {
