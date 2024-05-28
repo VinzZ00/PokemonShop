@@ -82,10 +82,6 @@ class PokemonDetailViewController : UIViewController {
             .subscribe { img in
                 self.pokemonImageView.image = img
             }.disposed(by: viewModel.cancellables)
-            
-//            .receive(on: DispatchQueue.main).sink { image in
-//            self.pokemonImageView.image = image
-//        }.store(in: &viewModel.cancellables)
         
         viewModel.pokemonDTO
             .observe(on: MainScheduler.instance)
@@ -97,11 +93,6 @@ class PokemonDetailViewController : UIViewController {
                 
                 
             }.disposed(by: viewModel.cancellables)
-//            .receive(on: DispatchQueue.main).sink { pokemon in
-//            self.nameLabel.text = pokemon.pokemonName
-//            self.weightLabel.text = "Weight: \(pokemon.weight)"
-//            self.qrImageView.image = pokemon.pokemonDisplay.absoluteString.generateQRCode() ?? UIImage(systemName: "qrcode")!
-//        }.store(in: &viewModel.cancellables)
         
     }
     

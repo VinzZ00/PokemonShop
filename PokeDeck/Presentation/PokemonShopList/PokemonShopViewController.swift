@@ -39,12 +39,6 @@ class PokemonShopViewController : UIViewController {
                 self.viewModel.pokemonData = pokemonsData
                 self.tableViewPokemon.reloadData()
             }.disposed(by: viewModel.cancellables)
-
-//            .receive(on: DispatchQueue.main)
-//            .sink { p in
-//                self.viewModel.pokemonData = p
-//                self.tableViewPokemon.reloadData()
-//            }.store(in: &viewModel.cancellables)
     }
     
     override func viewDidAppear(_ animated: Bool) {
