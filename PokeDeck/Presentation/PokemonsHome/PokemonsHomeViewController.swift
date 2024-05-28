@@ -40,11 +40,10 @@ class PokemonsHomeViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] pokemons in
-                
-                print("Pokemons : \(pokemons.count)")
-                
                 self?.viewModel.pokemonData = pokemons
-                self?.pokemonCollection.reloadData()
+//                if !(self?.viewModel.pokemonData.isEmpty ?? true) {
+                    self?.pokemonCollection.reloadData()
+//                }
             }).disposed(by: viewModel.cancellables)
     }
     
@@ -101,9 +100,7 @@ extension PokemonsHomeViewController : UICollectionViewDataSource, UICollectionV
         let vm = PokemonHomeDetailViewModel(pokemonDTO: viewModel.pokemonData[indexPath.row].0, pokemonImage: viewModel.pokemonData[indexPath.row].1)
         let vc = PokemonHomeDetailViewController(viewModel: vm) {
             pokemon in
-            self.viewModel.pokemonData.removeAll { pd in
-                pokemon.id == pd.0.id
-            }
+            self.viewModel.getAllPokemon()
             self.pokemonCollection.reloadData()
         }
         navigationController?.pushViewController(vc, animated: true)

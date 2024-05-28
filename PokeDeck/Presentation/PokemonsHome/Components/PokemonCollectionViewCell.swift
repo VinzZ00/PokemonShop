@@ -10,8 +10,8 @@ import UIKit
 
 class PokemonCollectionViewCell : UICollectionViewCell {
     static let identifier = "PokemonCollectionViewCell"
-    private let imageView = UIImageView(frame: .zero)
-    private let nameLabel = UILabel(frame : .zero)
+    private let imageView = UIImageView()
+    private let nameLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
