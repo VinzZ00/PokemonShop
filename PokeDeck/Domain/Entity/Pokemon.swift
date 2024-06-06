@@ -10,7 +10,6 @@ import Foundation
 struct PokemonData : Codable {
     let name : String
     let url : String
-    
 }
 
 struct PokemonLists : Codable {
@@ -25,5 +24,9 @@ struct Pokemon : Decodable {
 
 // MARK: Sprite (Image of the Pokemon) taking front only
 struct Sprites : Decodable {
-    let front_shiny : String
+    let frontShiny : String
+    
+    enum codingnKey : String, CodingKey  {
+        case frontShiny = "front_shiny"
+    }
 }
