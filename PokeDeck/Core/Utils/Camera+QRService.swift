@@ -22,7 +22,7 @@ class CameraService : NSObject {
     func setup(handleQRCode : @escaping (String) -> Void) {
         self.handleQRCode = handleQRCode;
         captureSession = AVCaptureSession()
-//        captureSession.sessionPreset = .medium
+//        captureSession.sessionPreset = .medium // Session preset high by default
         
         let deviceDiscovery = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back)
         
@@ -68,7 +68,6 @@ class CameraService : NSObject {
 }
 
 extension CameraService : AVCaptureMetadataOutputObjectsDelegate {
-    
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         stopRunning()
         

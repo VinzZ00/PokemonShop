@@ -11,10 +11,10 @@ import CoreData
 class GetPokemon {
     func call() -> [NSPokemon] {
         // get from coredata
-        let fetchReques : NSFetchRequest<NSPokemon> = NSPokemon.fetchRequest()
+        let fetchRequest : NSFetchRequest<NSPokemon> = NSPokemon.fetchRequest()
         
         do {
-            let pokemons = try Repository.shared.persistentContainer.viewContext.fetch(fetchReques)
+            let pokemons = try Repository.shared.persistentContainer.viewContext.fetch(fetchRequest)
             return pokemons
         } catch {
             print("Error fetching from core data \(error.localizedDescription)")

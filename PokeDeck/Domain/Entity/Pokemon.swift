@@ -7,22 +7,28 @@
 
 import Foundation
 
+
+// Making all of them Optional to avoid crashes
 struct PokemonData : Codable {
-    let name : String
-    let url : String
+    let name : String?
+    let url : String?
 }
 
 struct PokemonLists : Codable {
-    var results : [PokemonData]
+    var results : [PokemonData]?
 }
 
-struct Pokemon : Decodable {
-    let name : String
-    let sprites : Sprites
-    let weight: Int
+struct Pokemon : Codable {
+    let name : String?
+    let sprites : Sprites?
+    let weight: Int?
 }
 
 // MARK: Sprite (Image of the Pokemon) taking front only
-struct Sprites : Decodable {
-    let front_shiny : String
+struct Sprites : Codable {
+    let frontShiny : String
+    
+    enum codingnKey : String, CodingKey  {
+        case frontShiny = "front_shiny"
+    }
 }

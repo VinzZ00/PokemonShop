@@ -35,7 +35,7 @@ class PokemonDetailViewModel {
                 switch result {
                 case .success(let pokemonDetail) :
                     
-                    let pokemon = PokemonDTO(nickName: "", pokemonName: pokemonDetail.name, pokemonDisplay: URL(string: pokemonDetail.sprites.front_shiny) ?? URL(string: "https://placehold.co/96x96")! , weight: Float(pokemonDetail.weight))
+                    let pokemon = PokemonDTO(nickName: "", pokemonName: pokemonDetail.name, pokemonDisplay: URL(string: pokemonDetail.sprites.frontShiny) ?? URL(string: "https://placehold.co/96x96")! , weight: Float(pokemonDetail.weight))
                     self.pokemonDTO.onNext(pokemon)
                     
                 case .failure(let error) :
@@ -47,7 +47,7 @@ class PokemonDetailViewModel {
             .subscribe(onNext: { [weak self]
             pokemonDTO in
             guard let self = self else { return }
-            var url = pokemonDTO.pokemonDisplay
+            let url = pokemonDTO.pokemonDisplay
             Repository.shared.apiDatasources.fetchPokemonImage(url: url) { uiImage in
                 self.pokemonImage.onNext(uiImage)
             }
