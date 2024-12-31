@@ -28,7 +28,7 @@ struct Pokemon : Codable {
 struct Sprites : Codable {
     let frontShiny : String
     
-    enum codingnKey : String, CodingKey  {
+    enum CodingKeys: String, CodingKey {
         case frontShiny = "front_shiny"
     }
 }
