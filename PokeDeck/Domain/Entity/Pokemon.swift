@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+// Making all of them Optional to avoid crashes
 struct PokemonData : Codable {
     let name : String?
     let url : String?
