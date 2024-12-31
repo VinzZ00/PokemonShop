@@ -44,11 +44,13 @@ class PokemonSheetViewController: UIViewController {
         view.backgroundColor = .white
         view.layer.cornerRadius = 20
         view.addSubview(imageView)
+        imageView.contentMode = .scaleAspectFit
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
