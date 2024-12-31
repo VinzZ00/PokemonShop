@@ -23,7 +23,7 @@ class PokemonDetailViewModel {
     
     init(pokemonData : PokemonData) {
         
-        guard let url = URL(string: pokemonData.url) else {
+        guard let url = URL(string: pokemonData.url ?? "") else {
             print("Pokemon Detail URL Error : \(pokemonData.url)")
             return
         }
@@ -35,7 +35,7 @@ class PokemonDetailViewModel {
                 switch result {
                 case .success(let pokemonDetail) :
                     
-                    let pokemon = PokemonDTO(nickName: "", pokemonName: pokemonDetail.name, pokemonDisplay: URL(string: pokemonDetail.sprites.frontShiny) ?? URL(string: "https://placehold.co/96x96")! , weight: Float(pokemonDetail.weight))
+                    let pokemon = PokemonDTO(nickName: "", pokemonName: pokemonDetail.name ?? "", pokemonDisplay: URL(string: pokemonDetail.sprites?.frontShiny ?? "") ?? URL(string: "https://placehold.co/96x96")! , weight: Float(pokemonDetail.weight ?? 0))
                     self.pokemonDTO.onNext(pokemon)
                     
                 case .failure(let error) :

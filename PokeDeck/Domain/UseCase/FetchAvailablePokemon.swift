@@ -70,6 +70,6 @@ class FetchAvailablePokemon {
                 }
             }
         }
-        return pokemonData.sorted { $0.name < $1.name }
+        return pokemonData.sorted { $0.name ?? "" < $1.name ?? "" }
     }
 }
