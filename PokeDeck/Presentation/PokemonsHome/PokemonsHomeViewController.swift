@@ -41,9 +41,7 @@ class PokemonsHomeViewController: UIViewController {
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] pokemons in
                 self?.viewModel.pokemonData = pokemons
-//                if !(self?.viewModel.pokemonData.isEmpty ?? true) {
-                    self?.pokemonCollection.reloadData()
-//                }
+                self?.pokemonCollection.reloadData()
             }).disposed(by: viewModel.cancellables)
     }
     
