@@ -26,7 +26,7 @@ struct Pokemon : Codable {
 
 // MARK: Sprite (Image of the Pokemon) taking front only
 struct Sprites : Codable {
-    let frontShiny : String
+    let frontShiny : String?
     
     enum CodingKeys: String, CodingKey {
         case frontShiny = "front_shiny"
