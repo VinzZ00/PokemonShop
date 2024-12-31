@@ -10,18 +10,18 @@ import Foundation
 
 // Making all of them Optional to avoid crashes
 struct PokemonData : Codable {
-    let name : String
-    let url : String
+    let name : String?
+    let url : String?
 }
 
 struct PokemonLists : Codable {
-    var results : [PokemonData]
+    var results : [PokemonData]?
 }
 
 struct Pokemon : Codable {
-    let name : String
-    let sprites : Sprites
-    let weight: Int
+    let name : String?
+    let sprites : Sprites?
+    let weight: Int?
 }
 
 // MARK: Sprite (Image of the Pokemon) taking front only
